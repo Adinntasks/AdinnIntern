@@ -1,0 +1,261 @@
+* {
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-top: 150px; /* Default padding for desktop */
+    transition: padding-top 0.3s ease;
+}
+
+/* ==========================================================
+   Desktop Navbar Styles (≥ 768px)
+   ========================================================== */
+
+/* Primary Navbar Container */
+.rdshowNavMain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px; /* A bit more space */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    gap: 20px; /* Added gap */
+}
+
+/* Left: Logo */
+.NavRoadShowLogo {
+    flex-shrink: 0;
+    width: 90px;
+    cursor: pointer;
+}
+
+.NavRoadShowLogo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Center: Navigation Links */
+.rdNavContentMain {
+    flex: 1; /* Allow flex to manage space */
+    display: flex;
+    justify-content: center; /* Center the content */
+}
+
+.rdNavContentMain ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between nav items */
+}
+
+.rdNavContentMain li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.rdNavContentMain li a {
+    font-weight: 400;
+    font-size: 22px; /* Slightly smaller for balance */
+    color: #2B3333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.NavbarIcon1 {
+    height: 45px; /* Adjusted size */
+    width: 45px;
+}
+
+/* Right: Hamburger/Dropdown Area */
+.nav_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-icon {
+    cursor: pointer;
+}
+
+/* Dropdown Menu */
+.nav_user-content {
+    position: absolute;
+    top: calc(100% + 15px); /* Position below icon with gap */
+    right: 0;
+    background-color: white;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    padding: 10px 0;
+}
+
+.nav_user-content.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navUserMain {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+.navUserMain:hover {
+    background-color: #f7f7f7;
+}
+
+.navUserImg {
+    height: 30px;
+    width: 30px;
+}
+
+/* Secondary Capsule Navbar (Desktop) */
+.rdshowNavMain1 {
+    position: fixed;
+    top: 95px; /* Below primary navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 700px; /* Max width */
+    border-radius: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: #2B3333;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.rdshowNavMain1 > div {
+    transition: color 0.2s ease;
+}
+
+.rdshowNavMain1 > div:hover {
+    color: #007BFF;
+}
+
+
+/* ==========================================================
+   Mobile Navbar Styles (320px - 767px)
+   ========================================================== */
+.mobile-navbar {
+    display: none; /* Hidden by default */
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 70px; /* Adjust for mobile navbar height */
+    }
+
+    /* Hide desktop navbars */
+    .rdshowNavMain,
+    .rdshowNavMain1 {
+        display: none;
+    }
+
+    /* Show and style mobile navbar */
+    .mobile-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 0 15px;
+    }
+
+    .mobile-navbar-left .NavRoadShowLogo {
+        width: 50px;
+    }
+
+    .mobile-navbar-center {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: 0 10px; /* Give it some breathing room */
+    }
+    
+    .mobile-navbar-center-capsule {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        /* Fluid width with clamp() */
+        width: clamp(180px, 50vw, 250px);
+        padding: 8px 10px;
+        font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+        color: #2b3333;
+        gap: 10px;
+        white-space: nowrap;
+    }
+
+    .mobile-navbar-center-capsule div {
+        cursor: pointer;
+    }
+
+    .mobile-navbar-right {
+        position: relative;
+    }
+
+    .mobile-navbar-right .NavbarIcon1 {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Reposition dropdown for mobile */
+    .mobile-navbar-right .nav_user-content {
+        top: calc(100% + 10px);
+        width: 220px;
+    }
+}
+
+
+/* ==========================================================
+   Desktop Layout Restoration (≥ 768px)
+   ========================================================== */
+@media screen and (min-width: 768px) {
+    .mobile-navbar {
+        display: none;
+    }
+
+    .rdshowNavMain,
+    .rdshowNavMain1 {
+        display: flex;
+    }
+}

@@ -1,0 +1,461 @@
+/* ==========================================================
+   Navbar Stylesheet — FULL DIFF VERSION
+   OG → Updated
+   Legend:
+   🟢 NEW | 🟡 MODIFIED | 🔴 OLD | ⚪ RETAINED
+   ========================================================== */
+
+/* ⚪ RETAINED: Global reset */
+* {
+    font-family: 'Montserrat';
+}
+
+/* 🟢 NEW: Added universal box-sizing for layout consistency */
+* {
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   Primary Desktop Navbar
+   ========================================================== */
+
+/* 🔴 OLD */
+.rdshowNavMain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+/* 🟡 MODIFIED */
+.rdshowNavMain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    gap: 20px;
+}
+
+/* ==========================================================
+   Navigation Content Wrapper
+   ========================================================== */
+
+/* 🔴 OLD */
+.rdNavContentMain ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* 🟢 NEW */
+.rdNavContentMain ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 40px; /* increased spacing */
+}
+
+/* 🔴 OLD */
+.rdNavContentMain li {
+    margin: 0 20px;
+}
+
+/* 🟡 MODIFIED */
+.rdNavContentMain li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* 🔴 OLD */
+.rdNavContentMain li a {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    color: #2B3333;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* 🟡 MODIFIED */
+.rdNavContentMain li a {
+    font-weight: 400;
+    font-size: 22px; /* slightly smaller font */
+    color: #2B3333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* ==========================================================
+   Icons & Logos
+   ========================================================== */
+
+/* 🔴 OLD */
+.NavbarIcon1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+/* 🟡 MODIFIED */
+.NavbarIcon1 {
+    height: 45px;
+    width: 45px;
+}
+
+/* ⚪ RETAINED: Logo */
+.NavRoadShowLogo {
+    height: auto;
+    width: 100px;
+    cursor: pointer;
+}
+
+/* 🟢 NEW: Logo scaling for header flex */
+.NavRoadShowLogo {
+    flex-shrink: 0;
+    width: 110px;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   Dropdown Menu
+   ========================================================== */
+
+/* 🔴 OLD */
+.nav_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ⚪ RETAINED */
+.nav_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 🔴 OLD */
+.nav_user-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    margin-top: 10px;
+    width: max-content;
+    min-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    padding: 15px 0;
+}
+
+/* 🟡 MODIFIED */
+.nav_user-content {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: white;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    padding: 10px 0;
+}
+
+/* 🔴 OLD */
+.nav_user-content.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ⚪ RETAINED */
+.nav_user-content.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ==========================================================
+   Dropdown Items
+   ========================================================== */
+
+/* 🔴 OLD */
+.navUserMain {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+}
+
+/* 🟡 MODIFIED */
+.navUserMain {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+/* 🔴 OLD */
+.navUserMain:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ⚪ RETAINED */
+.navUserMain:hover {
+    background-color: #f7f7f7;
+}
+
+/* ⚪ RETAINED: dropdown icon */
+.navUserImg {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================
+   Secondary Capsule Navbar
+   ========================================================== */
+
+/* 🔴 OLD */
+.rdshowNavMain1 {
+    padding: 30px 120px;
+    opacity: 1;
+    border-radius: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px 0px #0000001A;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 60%;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    color: #2B3333;
+    margin-top: 1%;
+}
+
+/* 🟡 MODIFIED */
+.rdshowNavMain1 {
+    position: fixed;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 700px;
+    border-radius: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: #2B3333;
+    z-index: 999;
+}
+
+/* 🟢 NEW */
+.rdshowNavMain1 > div:hover {
+    color: #007BFF;
+}
+
+/* ==========================================================
+   🔴 OLD: Legacy float/nav classes removed (kept for context)
+   ========================================================== */
+
+/* 🔴 OLD */
+.rdNavContentInside {
+    display: flex;
+    gap: 10px;
+}
+
+/* 🔴 OLD */
+.NavbarIcon1 {
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================================
+   Mobile Navbar (≤ 320px OG)
+   ========================================================== */
+
+/* 🔴 OLD */
+@media screen and (max-width: 320px) {
+  .rdshowNavMain,
+  .rdshowNavMain1,
+  .rdNavContentMain,
+  .desktop-secondary {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .mobile-navbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 68px !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+    z-index: 10000 !important;
+    padding: 0 10px !important;
+  }
+
+  .mobile-navbar-center {
+    flex: 1 1 140px !important;
+    width: 165px !important;
+    display: flex !important;
+    justify-content: space-evenly !important;
+    gap: 14px !important;
+    align-items: center !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%) !important;
+  }
+}
+
+/* 🟢 NEW: Modern unified mobile query (≤767px) */
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .rdshowNavMain,
+    .rdshowNavMain1 {
+        display: none;
+    }
+
+    .mobile-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 0 15px;
+    }
+
+    .mobile-navbar-left .NavRoadShowLogo {
+        width: 60px;
+    }
+
+    .mobile-navbar-center {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-navbar-center-capsule {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        width: clamp(180px, 50vw, 250px);
+        padding: 8px 10px;
+        font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+        color: #2b3333;
+        gap: 10px;
+        white-space: nowrap;
+    }
+
+    .mobile-navbar-right .NavbarIcon1 {
+        width: 30px;
+        height: 30px;
+    }
+
+    .mobile-navbar-right .nav_user-content {
+        top: calc(100% + 10px);
+        width: 220px;
+    }
+}
+
+/* ==========================================================
+   Restoration for Desktop ≥ 768px
+   ========================================================== */
+
+/* 🔴 OLD */
+@media screen and (min-width: 321px) {
+  .mobile-navbar {
+    display: none !important;
+  }
+
+  .rdshowNavMain,
+  .rdshowNavMain1 {
+    display: flex !important;
+  }
+}
+
+/* 🟢 NEW */
+@media screen and (min-width: 768px) {
+    .mobile-navbar {
+        display: none;
+    }
+
+    .rdshowNavMain,
+    .rdshowNavMain1 {
+        display: flex;
+    }
+}
+
+/* ==========================================================
+   🟢 NEW: Utility Additions
+   ========================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+.navUserMain img {
+    object-fit: contain;
+}

@@ -1,0 +1,282 @@
+/* ==========================================================
+   Navbar Stylesheet
+   ========================================================== */
+
+/* ⚪ RETAINED: Global font style */
+* {
+    font-family: 'Montserrat';
+}
+
+/* ⚪ RETAINED: Primary Navbar Container */
+.rdshowNavMain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+/* 🟡 MODIFIED: Modernized layout by using flex in place of float */
+.rdNavContentMain ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* changed from float-based layout */
+    align-items: center; /* ensures proper alignment */
+}
+
+/* 🟡 MODIFIED: Simplified list item spacing */
+.rdNavContentMain li {
+    margin: 0 20px;
+}
+
+/* ⚪ RETAINED: Link text styling */
+.rdNavContentMain li a {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #2B3333;
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+}
+
+/* ⚪ RETAINED: Flex grouping for icons and text */
+.rdNavContentInside {
+    display: flex;
+    gap: 10px;
+}
+
+/* ⚪ RETAINED: Secondary navigation (capsule) */
+.rdshowNavMain1 {
+    padding: 30px 120px;
+    opacity: 1;
+    border-radius: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px 0px #0000001A;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 60%;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #2B3333;
+    margin-top: 1%;
+}
+
+/* ⚪ RETAINED: Logo styles */
+.NavRoadShowLogo {
+    height: auto;
+    width: 100px;
+    cursor: pointer;
+}
+
+/* ⚪ RETAINED: Navbar icon styles */
+.NavbarIcon1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+/* ⚪ RETAINED: Navigation container with dropdown support */
+.nav_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ⚪ RETAINED: Hover transition for icons */
+.NavbarIcon1 {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* ⚪ RETAINED: Hamburger icon position fix */
+.hamburger-icon {
+    position: relative;
+    z-index: 1000;
+}
+
+/* ⚪ RETAINED: Dropdown container with blur and transition */
+.nav_user-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    margin-top: 10px;
+    width: max-content;
+    min-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    padding: 15px 0;
+}
+
+/* ⚪ RETAINED: Dropdown active state */
+.nav_user-content.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ⚪ RETAINED: User dropdown item styling */
+.navUserMain {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: #000000;
+}
+
+/* ⚪ RETAINED: Hover background for dropdown items */
+.navUserMain:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ⚪ RETAINED: Dropdown icon styling */
+.navUserImg {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================
+   🟢 ADDED: Fixed Mobile Navbar Styles (≤ 320px)
+   ========================================================== */
+@media screen and (max-width: 320px) {
+  /* 🟢 ADDED: Hide desktop navbars on mobile */
+  .rdshowNavMain,
+  .rdshowNavMain1,
+  .rdNavContentMain,
+  .desktop-secondary {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* 🟢 ADDED: Fixed mobile navbar container */
+  .mobile-navbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 68px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+    z-index: 10000 !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    gap: 8px !important;
+    overflow: hidden !important;
+  }
+
+  /* 🟢 ADDED: Left logo section */
+  .mobile-navbar-left {
+    flex: 0 0 auto !important;
+  }
+
+  .mobile-navbar-left .NavRoadShowLogo {
+    width: 42px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* 🟢 ADDED: Center capsule section (packages/offers/vehicles) */
+  .mobile-navbar-center {
+    flex: 1 1 140px !important;
+    width: 165px !important;
+    min-width: 120px !important;
+    max-width: 165px !important;
+    display: flex !important;
+    justify-content: space-evenly !important;
+    gap: 14px !important;
+    align-items: center !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+    font-size: 0.7rem !important;
+    color: #2b3333 !important;
+    white-space: nowrap !important;
+    transform: translateX(-2px);
+  }
+
+  .mobile-navbar-center div {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-navbar-center div:hover {
+    color: #00bfff;
+  }
+
+  /* 🟢 ADDED: Right hamburger section */
+  .mobile-navbar-right {
+    flex: 0 0 auto !important;
+  }
+
+  .mobile-navbar-right .NavbarIcon1 {
+    width: 22px !important;
+    height: 22px !important;
+    object-fit: contain !important;
+    cursor: pointer;
+    display: block !important;
+  }
+
+  /* 🟢 ADDED: Maintain spacing between fixed navbar and content */
+  body {
+    padding-top: 75px !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+
+  html {
+    overflow-x: hidden !important;
+  }
+}
+
+/* ==========================================================
+   🟢 ADDED: Restore Desktop Layout (≥ 321px)
+   ========================================================== */
+@media screen and (min-width: 321px) {
+  .mobile-navbar {
+    display: none !important;
+  }
+
+  .rdshowNavMain,
+  .rdshowNavMain1 {
+    display: flex !important;
+  }
+}
+
+/* 🟡 MODIFIED: Capsule width adjustments for consistency */
+.mobile-navbar-center {
+  flex: 1 1 140px !important;
+  min-width: 115px !important;
+}

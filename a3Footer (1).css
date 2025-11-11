@@ -1,0 +1,332 @@
+/* 
+* {
+    font-family: 'Montserrat';
+}
+*/ 
+
+/* .RdFooterMain {
+    background: #FFFFFF;
+    backdrop-filter: blur(44px);
+    box-shadow: 0px 0px 18.6px 0px #0000001A;
+    /* box-shadow: 10px 0px 0px 18px #0000001A; */ /*
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 3% 0px;
+} 
+*/
+
+/*
+
+.FooterAdinnLogo {
+    height: auto;
+    width: 150px;
+}
+
+.FooterSocIcons {
+    display: flex;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.FootSocIcon {
+    height: 35px;
+    width: 35px;
+}
+
+.RdFooterContactNumber {
+    display: flex;
+    gap: 5px;
+}
+
+.RdFootContactContents {
+    font-weight: 400;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #2B3333;
+    margin: 10px auto;
+}
+
+/* INPUT HIGHLIGH FOR CONTACT  */
+/* .RdFootContactContentsInputMain{
+    display: flex;
+} */
+/* .RdFootContactContentsInput {
+    outline: none;
+    border: none;
+    border: 1px solid rgba(168, 168, 168, 1);
+    width: 205px;
+    color: rgba(51, 51, 51, 1);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    padding: 5px 10px;
+} */
+
+    /* .RdFootContactContentsInput::-webkit-outer-spin-button,
+    .RdFootContactContentsInput::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    } */
+
+/* .RdFootContactContentsInput {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+} */
+
+
+/* .RdFootContactContentsInput::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #2B3333;
+
+} */
+/* .RdFootContactContentsInputSend{
+padding: 0px 10px;
+opacity: 1;
+border-top-right-radius: 2px;
+border-bottom-right-radius: 2px;
+background: linear-gradient(180deg, #E54472 0%, #BE1344 100%);
+} */
+
+/* .RdFootContactContentsInputSendIcon{
+    height: 50%;
+    width: 10px;
+    margin: auto ;
+} */
+
+/* .RdFootContactContentsHighlight {
+    font-weight: 700;
+
+} */
+
+/* .RdFootContactContentsTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 188%;
+    letter-spacing: 0%;
+    color: #2B3333;
+} */ 
+
+/* {New CSS from here} */
+
+
+/* =========================================================
+   a3Footer.css - Fixed Footer Styles
+   ========================================================= */
+
+:root {
+  --color-primary: #d4145a;
+  --color-primary-dark: #b5104a;
+  --color-text: #2b3333;
+  --color-text-light: #666;
+  --color-background: #ffffff;
+  --color-border: #e6e6e6;
+  --color-border-light: #eee;
+  --font-family: "Montserrat", sans-serif;
+}
+
+/* === GLOBAL RESET - CRITICAL === */
+* {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.main-content {
+  flex: 1;
+  background-color: #1e1e1e;
+  color: white;
+  width: 100%;
+}
+
+/* === FOOTER CONTAINER === */
+.RdFooterMain {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  /* Force full width */
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+/* === DESKTOP FOOTER - FIXED === */
+.footer-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem 5%;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  /* Prevent any constraints */
+  box-sizing: border-box;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Logo & Social */
+.FooterAdinnLogo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.FooterSocIcons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.FootSocIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.FootSocIcon:hover {
+  opacity: 1;
+}
+
+/* Typography */
+.footer-column h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: var(--color-primary);
+}
+
+.footer-column p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border-light);
+  margin-top: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === MOBILE FOOTER === */
+.footer-mobile-navbar {
+  display: none;
+}
+
+/* ===== MOBILE STYLES ===== */
+@media screen and (max-width: 767px) {
+  /* Hide desktop footer */
+  .footer-desktop {
+    display: none;
+  }
+
+  /* Mobile navbar - FIXED POSITIONING */
+  .footer-mobile-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+    padding: 12px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Safe area for mobile devices */
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .footer-mobile-item {
+    text-align: center;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0; /* Prevents overflow */
+  }
+
+  .footer-mobile-icon {
+    width: 26px;
+    height: 26px;
+    margin-bottom: 4px;
+  }
+
+  /* Space for mobile navbar */
+  .footer-bottom {
+    margin-bottom: 80px;
+  }
+
+  .FooterAdinnLogo {
+    width: 120px;
+  }
+}
+
+/* Small mobile optimization */
+@media screen and (max-width: 400px) {
+  .footer-mobile-item {
+    font-size: 0.8rem;
+  }
+  
+  .footer-mobile-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
