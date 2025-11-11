@@ -69,7 +69,7 @@ function Navbar() {
           <img
             src="/images/Adinn New Logo_Main.png"
             alt="Logo"
-            className="NavRoadShowLogo"
+            className="NavRoadShowLogo glossy-logo"
             onClick={() => navigate("/")}
           />
         </div>
@@ -100,7 +100,7 @@ function Navbar() {
     <div className="desktop-navbar-container">
       <header className="rdshowNavMain">
         {/* Left: Logo */}
-        <div className="NavRoadShowLogo" onClick={() => navigate("/")}>
+        <div className="NavRoadShowLogo glossy-logo" onClick={() => navigate("/")}>
           <img src="/images/Adinn New Logo_Main.png" alt="Logo" />
         </div>
 

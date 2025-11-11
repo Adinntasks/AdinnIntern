@@ -1,43 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from '@/components/ui/card';
 
 // Props: { imageSrc, title, description, altTag }
 
 const ProjectCard = ({ imageSrc, title, description, altTag }) => {
-  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
-
-  const handleCardClick = () => {
-    if (window.innerWidth < 1024) {
-      // On small screens, toggle the description overlay
-      setIsDescriptionVisible((v) => !v);
-    }
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleCardClick();
-    }
-  };
+  const scale = 1 + description.length / 200; // Dynamic scale based on description length
 
   return (
     <Card
       className="project-card"
-      onClick={handleCardClick}
-      onKeyDown={handleKeyDown}
+      style={{ '--scale': scale }}
       tabIndex={0}
       role="button"
       aria-label={`View details for ${title}`}
-      onMouseEnter={() => {
-        if (window.innerWidth >= 1024) {
-          setIsDescriptionVisible(true);
-        }
-      }}
-      onMouseLeave={() => {
-        if (window.innerWidth >= 1024) {
-          setIsDescriptionVisible(false);
-        }
-      }}
     >
       {/* Image Area */}
       <div className="project-card-image-container">
@@ -54,16 +29,10 @@ const ProjectCard = ({ imageSrc, title, description, altTag }) => {
         </div>
 
         {/* Description Overlay */}
-        <div
-          className={`description-overlay ${
-            isDescriptionVisible
-              ? 'visible'
-              : ''
-          }`}
-        >
+        <div className="description-overlay">
           <div className="text-center">
-            <h3>{title}</h3>
             <p>{description}</p>
+            <p className="explore-text">Explore vehicle specs →</p>
           </div>
         </div>
       </div>

@@ -88,100 +88,128 @@ main {
 .project-card {
   position: relative;
   overflow: hidden;
-  border-radius: 0;
-  background-color: transparent;
-  border: none;
+  border-radius: 1rem;
+  background-color: #fff;
   box-shadow: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
-  transform: translateY(0);
-  padding: 0;
-  margin: 0;
+  margin: 0 auto; /* center the cards in the grid column */
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-}
-
-.project-card:focus {
-  outline: 2px solid #d4145a;
-  outline-offset: 2px;
+  transform: translateY(-6px) scale(var(--scale));
 }
 
 /* Image Container */
 .project-card-image-container {
   position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 75%; /* Maintain aspect ratio */
+  width: fit-content;
+  height: auto;
   overflow: hidden;
 }
 
 .project-card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
-  background: rgba(120, 120, 130, 0.3);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(120, 120, 130, 0.4);
-  border-radius: 12px;
+  transition: transform 0.4s ease;
+  border-radius: 1rem;
 }
 
-/* Title Overlay */
-.title-overlay {
+.project-card:hover .project-card-image {
+  transform: scale(1.03);
+}
+
+/* Light Sweep Animation */
+.project-card-image-container::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.6));
-  padding: 1.25rem 1.5rem;
-  color: white;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.project-card:hover .project-card-image-container::after {
+  left: 150%;
+}
+
+/* Text Section */
+.title-overlay {
+  display: none;
 }
 
 .title-overlay h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
   margin: 0;
-  line-height: 1.4;
+  background: linear-gradient(to right, #fff, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease;
+}
+
+.project-card:hover .title-overlay h3 {
+  background: linear-gradient(to right, #fff, #00c6ff);
+  -webkit-background-clip: text;
 }
 
 /* Description Overlay */
 .description-overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(212, 20, 90, 0.1));
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  transition: all 0.3s ease-in-out;
-  opacity: 0;
-  transform: translateY(1rem) scale(0.95);
-  pointer-events: none;
-  color: white;
+  justify-content: flex-start; /* Align content to the top */
+  padding: 1rem; /* Adjust padding */
+  transition: transform 0.4s ease;
+  transform: translateY(100%);
+  color: black;
   text-align: center;
+  overflow-y: hidden; /* Add scroll for overflowing content */
+  box-sizing: border-box; /* Ensure padding is included in height */
 }
 
-.description-overlay.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
+.project-card:hover .description-overlay {
+  transform: translateY(0);
 }
 
 .description-overlay h3 {
+  font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .description-overlay p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  line-height: 1.3;
   opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.description-overlay .explore-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
 /* Utility */
