@@ -1,25 +1,24 @@
 /* ==========================================================
-   PROJECTS SECTION — FINAL VERSION
+   PROJECTS SECTION — CLICK EFFECT FOR MOBILE
    ========================================================== */
 
 /* Overall Page Background */
 body {
-  background-color: #35f2ec !important; /* ✅ ensures consistent light background */
+  background-color: #35f2ec !important;
   color: #111;
   margin: 0;
   padding: 0;
 }
 
-/* Make sure the main wrapper (if any) doesn’t override the color */
 main {
-  background-color: #35f2ec !important; /* ✅ ensures consistent light background */
+  background-color: #35f2ec !important;
 }
 
 /* Projects Section Wrapper */
 #projects {
   width: 100%;
-  background-color: #f0f8fa; /* ✅ light pastel background */
-  padding: 4rem 0;
+  background-color: #f0f8fa;
+  padding: 64px 0;
   margin: 0;
   display: block;
 }
@@ -28,51 +27,58 @@ main {
 .projects-heading {
   display: flex;
   justify-content: center;
-  margin-bottom: 4rem;
-  padding: 0 2rem;
+  margin-bottom: 64px;
+  padding: 0 24px;
+  padding-top: 50px;
 }
-
 .projects-heading-title {
-  background: linear-gradient(135deg, #d4145a, #b3124a);
-  color: white;
-  padding: 1rem 3rem;
-  border-radius: 50px;
-  box-shadow: 0 20px 25px -5px rgba(212, 20, 90, 0.3),
-              0 10px 10px -5px rgba(212, 20, 90, 0.2);
   position: relative;
+  display: inline-block;
+  color: white;
+  padding: 24px 84px;
+  font-family: 'Pacifico', cursive;
+  font-size: 56px;
+  text-align: center;
   overflow: hidden;
-  filter: drop-shadow(0 0 10px rgba(212, 20, 90, 0.4));
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
 }
 
+/* Inner layer handles the clip-path */
 .projects-heading-title::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  inset: 0;
+  background: linear-gradient(135deg, #E52B2C, #7F1818);
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+  border-radius: 30px;
+  z-index: -1;
+  box-shadow: 0 20px 25px -5px rgba(212, 20, 90, 0.3),
+              0 10px 10px -5px rgba(212, 20, 90, 0.2);
+  
 }
 
+/* 
 .projects-heading-title:hover::before {
   left: 100%;
-}
+} */
 
 .projects-heading-title h2 {
-  font-size: 2.5rem;
+  font-size: 64px;
   font-weight: 800;
+  font-family: pacifico, cursive;
+  text-align: center;
   margin: 0;
   position: relative;
-  z-index: 1;
+  z-index: 1;  
 }
 
 /* Project Grid Layout */
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 0 2rem;
+  gap: 20px;
+  padding: 0 2px;
+  padding-bottom: 40px;
   max-width: 1200px;
   margin: 0 auto;
   background-color: transparent;
@@ -84,135 +90,184 @@ main {
   }
 }
 
-/* Project Card */
+/* ==========================================================
+   PROJECT CARD — CLEAN VERSION WITH HOVER FIX
+   ========================================================== */
 .project-card {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
-  background-color: #fff;
-  box-shadow: none;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 20px;
+  background-color: whitesmoke;
+  border: 2px solid #00bfa5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
-  margin: 0 auto; /* center the cards in the grid column */
+  margin: 0 auto;
+  transform-origin: center center;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
 }
 
-.project-card:hover {
-  transform: translateY(-6px) scale(var(--scale));
+/* Desktop Hover Effects - Restored “lift” feel */
+@media (min-width: 768px) {
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+    border-color: #30A6A8;
+    background-color: #ffffff;
+  }
+
+  .project-card:hover .project-card-image {
+    transform: scale(1.08);
+  }
+
+  .project-card:hover .description-overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .project-card:hover .project-card-image-container::after {
+    left: 150%;
+  }
+}
+
+/* Mobile Active State */
+.project-card.active {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-card.active .project-card-image {
+  transform: scale(1.03);
+}
+
+.project-card.active .description-overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* Image Container */
 .project-card-image-container {
   position: relative;
-  width: fit-content;
+  width: 100%;
   height: auto;
   overflow: hidden;
 }
 
 .project-card-image {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.4s ease;
-  border-radius: 1rem;
-}
-
-.project-card:hover .project-card-image {
-  transform: scale(1.03);
-}
-
-/* Light Sweep Animation */
-.project-card-image-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  border-radius: 12px 12px 0 0;
 }
 
-.project-card:hover .project-card-image-container::after {
-  left: 150%;
+/* Light Sweep Animation - Desktop only */
+@media (min-width: 768px) {
+  .project-card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
 }
 
-/* Text Section */
-.title-overlay {
-  display: none;
-}
-
-.title-overlay h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0;
-  background: linear-gradient(to right, #fff, #fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.4s ease;
-}
-
-.project-card:hover .title-overlay h3 {
-  background: linear-gradient(to right, #fff, #00c6ff);
-  -webkit-background-clip: text;
-}
-
-/* Description Overlay */
+/* ==========================================================
+   DESCRIPTION OVERLAY
+   ========================================================== */
 .description-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50%;
-  background: white;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(5px);
+  padding: 0px;
+  transition: all 0.3s ease;
+  transform: translateY(100%);
+  opacity: 0;
+  color: black;
+  box-sizing: border-box;
+  border-top: 2px solid #ffffff;
+  height: 35%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Align content to the top */
-  padding: 1rem; /* Adjust padding */
-  transition: transform 0.4s ease;
-  transform: translateY(100%);
-  color: black;
-  text-align: center;
-  overflow-y: hidden; /* Add scroll for overflowing content */
-  box-sizing: border-box; /* Ensure padding is included in height */
-}
-
-.project-card:hover .description-overlay {
-  transform: translateY(0);
+  justify-content: flex-start;
+  text-align: left !important;
 }
 
 .description-overlay h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #000000;
+  text-align: left !important;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 .description-overlay p {
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 0.8rem;
-  line-height: 1.3;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-}
-
-.description-overlay .explore-text {
-  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0;
+  color: #000000;
+  width: 100%;
+  text-align: justify;
 }
 
-/* Utility */
-.text-center {
-  text-align: center;
+/* ==========================================================
+   MOBILE OPTIMIZATIONS
+   ========================================================== */
+@media (max-width: 767px) {
+  .project-grid {
+    gap: 10px;
+    padding: 0 5px;
+    padding-bottom: 40px;
+  }
+
+  .description-overlay {
+    max-height: 35%;
+    padding: 2px;
+    border-width: 1px;
+  }
+
+  .description-overlay.compact {
+    max-height: 30%;
+    padding: 2px 0;
+  }
+
+  .description-overlay h3 {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .description-overlay p {
+    font-size: 8px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .projects-heading-title h2 {
+    font-size: 32px;
+    text-align: left;
+  }
+
+  .project-card-image-container::after {
+    display: none;
+  }
 }
