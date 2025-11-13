@@ -115,15 +115,6 @@ function Footer({ navLinks }) {
   const [isAddressOpen, setAddressOpen] = useState(false);
 
 
-  // Default navLinks for backward compatibility
-  const defaultNavLinks = [
-    { path: "/", text: "Home", icon: "/images/home-icon.png" },
-    { path: "/services", text: "Services", icon: "/images/services-icon.png" },
-    { path: "/about", text: "About", icon: "/images/about-icon.png" },
-    { path: "/contact", text: "Contact", icon: "/images/contact-icon.png" }
-  ];
-
-  const finalNavLinks = navLinks && navLinks.length > 0 ? navLinks : defaultNavLinks;
 
   const services = [
     "LED Screen Vehicle",
@@ -407,24 +398,41 @@ function Footer({ navLinks }) {
       </div>
 
       {/* Mobile Navbar - Fixed at Bottom */}
-      {finalNavLinks.length > 0 && (
-        <div className="footer-mobile-navbar show-on-mobile">
-          {finalNavLinks.map((link, index) => (
-            <div
-              key={index}
-              className="footer-mobile-item"
-              onClick={() => (window.location.href = link.path)}
-            >
-              <img
-                src={link.icon}
-                alt={link.text}
-                className="footer-mobile-icon"
-              />
-              <span>{link.text}</span>
-            </div>
-          ))}
+      <div className="footer-mobile-navbar show-on-mobile">
+        <div
+          className="footer-mobile-item"
+          onClick={() => (window.location.href = "/")}
+        >
+          <img
+            src="/images/NavbarIcon1.png"
+            alt="Home"
+            className="footer-mobile-icon"
+          />
+          <span>Home</span>
         </div>
-      )}
+        <div
+          className="footer-mobile-item"
+          onClick={() => (window.location.href = "/services")}
+        >
+          <img
+            src="/images/NavbarIcon2.png"
+            alt="Services"
+            className="footer-mobile-icon"
+          />
+          <span>Services</span>
+        </div>
+        <div
+          className="footer-mobile-item"
+          onClick={() => (window.location.href = "/about")}
+        >
+          <img
+            src="/images/NavbarIcon3.png"
+            alt="About"
+            className="footer-mobile-icon"
+          />
+          <span>About</span>
+        </div>
+      </div>
     </div>
   );
 }

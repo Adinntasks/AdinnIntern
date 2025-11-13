@@ -1,22 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 /* ==========================================================
-   PROJECTS SECTION — CLICK EFFECT FOR MOBILE
+   GLOBAL BACKGROUND
    ========================================================== */
-
-/* Overall Page Background */
-body {
+body, main {
   background-color: #35f2ec !important;
   color: #111;
   margin: 0;
   padding: 0;
 }
 
-main {
-  background-color: #35f2ec !important;
-}
-
-/* Projects Section Wrapper */
 #projects {
   width: 100%;
   background-color: #f0f8fa;
@@ -25,75 +18,59 @@ main {
   display: block;
 }
 
-/* Heading Section */
+/* ==========================================================
+   HEADING SECTION
+   ========================================================== */
 .projects-heading {
   display: flex;
   justify-content: center;
   margin-bottom: 64px;
-  padding: 0 24px;
-  padding-top: 50px;
+  padding: 50px 24px 0;
 }
+
 .projects-heading-title {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: white;
-  padding: 24px 84px 44px;
+  padding: 0px 104px 224px;
   font-family: 'Pacifico', cursive;
-  font-size: 56px;
   overflow: hidden;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
 }
 
-/* Inner layer handles the clip-path */
 .projects-heading-title::before {
   content: '';
   position: absolute;
   inset: 0;
-  
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  transform: perspective(150px) rotateX(-15deg);
-  transform-origin: top;
- 
   background: linear-gradient(135deg, #E52B2C, #7F1818);
- 
-
+  border-radius: 20px 20px 5px 5px;
+  transform: perspective(200px) rotateX(-35deg);
+  transform-origin: top;
   z-index: -1;
-  filter: drop-shadow(0 20px 25px rgba(212, 20, 90, 0.3))
-          drop-shadow(0 10px 10px rgba(212, 20, 90, 0.2));
-  
 }
 
-/* 
-.projects-heading-title:hover::before {
-  left: 100%;
-} */
 
 .projects-heading-title h2 {
   font-size: 64px;
+  font-family: 'Pacifico';
   font-weight: 800;
-  font-family: pacifico;
-  text-align: center;
   margin: 0;
   position: relative;
-  z-index: 1;
-  top: 0.1em;
+  top: 0.05em;
 }
 
-/* Project Grid Layout */
+/* ==========================================================
+   PROJECT GRID
+   ========================================================== */
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  padding: 0 2px;
-  padding-bottom: 40px;
+  padding: 0 2px 40px;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: transparent;
+  margin: -200px auto 0;
 }
 
 @media (min-width: 768px) {
@@ -103,7 +80,7 @@ main {
 }
 
 /* ==========================================================
-   PROJECT CARD — CLEAN VERSION WITH HOVER FIX
+   PROJECT CARD
    ========================================================== */
 .project-card {
   position: relative;
@@ -111,18 +88,21 @@ main {
   border-radius: 20px;
   background-color: whitesmoke;
   border: 2px solid #00bfa5;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   padding: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(.25,.46,.45,1),
+    box-shadow 0.35s cubic-bezier(.25,.46,.45,1),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
   margin: 0 auto;
-  transform-origin: center center;
   will-change: transform, box-shadow;
   backface-visibility: hidden;
 }
 
-/* Desktop Hover Effects - Restored “lift” feel */
-@media (min-width: 768px) {
+/* ==========================================================
+   DESKTOP HOVER
+   ========================================================== */
+@media (min-width: 1024px) {
   .project-card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
@@ -139,15 +119,18 @@ main {
     opacity: 1;
   }
 
-  .project-card:hover .project-card-image-container::after {
-    left: 150%;
+  .project-card:hover .card-arrow-container {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
-/* Mobile Active State */
+/* ==========================================================
+   CLICK LOGIC ON ALL DEVICES
+   ========================================================== */
 .project-card.active {
   transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,.2);
 }
 
 .project-card.active .project-card-image {
@@ -159,25 +142,21 @@ main {
   opacity: 1;
 }
 
-/* Image Container */
-.project-card-image-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+/* Arrow hides when active */
+.project-card.active .card-arrow-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-.project-card-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-  border-radius: 12px 12px 0 0;
-}
+/* ==========================================================
+   TABLET HOVER (LIGHT)
+   ========================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  }
 
-/* Light Sweep Animation - Desktop only */
-@media (min-width: 768px) {
   .project-card-image-container::after {
     content: '';
     position: absolute;
@@ -187,137 +166,185 @@ main {
     height: 100%;
     background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0) 100%
+      transparent 0%,
+      rgba(255,255,255,.3) 50%,
+      transparent 100%
     );
     transform: skewX(-25deg);
-    transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: left 0.75s cubic-bezier(.4,0,.2,1);
   }
 }
 
 /* ==========================================================
-   DESCRIPTION OVERLAY
+   IMAGE
    ========================================================== */
-.description-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(5px);
-  padding: 0px;
-  transition: all 0.3s ease;
-  transform: translateY(100%);
-  opacity: 0;
-  color: black;
-  box-sizing: border-box;
-  border-top: 2px solid #ffffff;
-  height: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: left !important;
-}
-
-.description-overlay h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  color: #000000;
-  text-align: left !important;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.description-overlay p {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  margin: 0;
-  color: #000000;
+.project-card-image-container {
+  position: relative;
   width: 100%;
-  text-align: justify;
+  overflow: hidden;
+}
+
+.project-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.55s cubic-bezier(.22,1,.36,1);
 }
 
 /* ==========================================================
-   MOBILE OPTIMIZATIONS
+   DESCRIPTION OVERLAY — AUTO FIT CONTENT
+   ========================================================== */
+.description-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(5px);
+
+  padding: 6px;
+
+  /* ❗ NEW: Auto fit the content */
+  height: auto !important;
+  max-height: 55% !important;
+  min-height: 30%;
+
+  border-top: 2px solid #ffffff;
+
+  transform: translateY(100%);
+  opacity: 0;
+
+  transition:
+    transform 0.4s cubic-bezier(.4,0,.2,1),
+    opacity 0.3s ease-out;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   FORCED LEFT ALIGNMENT
+   ========================================================== */
+.description-overlay,
+.description-overlay h3,
+.description-overlay p {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+.project-card * {
+  text-align: initial;
+}
+
+.description-overlay h3 {
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1;
+  color: black;
+  margin-top: -4px;
+}
+
+.description-overlay p {
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 100%;
+  margin: 0;
+  color: black;
+}
+
+/* ==========================================================
+   TABLET OVERLAY HEIGHT FIX (NO CUT-OFF)
+   ========================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .description-overlay {
+    height: auto !important;
+    max-height: 65% !important;
+    min-height: 40%;
+    padding: 10px 8px !important;
+  }
+
+  .description-overlay h3 {
+    font-size: 16px !important;
+  }
+
+  .description-overlay p {
+    font-size: 12px !important;
+    line-height: 100%;
+  }
+}
+
+/* ==========================================================
+   MOBILE VIEW
    ========================================================== */
 @media (max-width: 767px) {
   .project-grid {
     gap: 10px;
-    padding: 0 5px;
-    padding-bottom: 40px;
+    padding: 0 5px 40px;
   }
 
   .description-overlay {
-    max-height: 35%;
-    padding: 2px;
     padding: 4px 0;
     border-width: 1px;
   }
 
-  .description-overlay.compact {
-    max-height: 30%;
-    padding: 2px 0;
-  }
-
   .description-overlay h3 {
-    font-size: 12px;
-    margin-bottom: 4px;
+    font-size: 10px;
+    margin-top: 4px;
   }
 
   .description-overlay p {
     font-size: 8px;
-    line-height: 1.2;
-    margin-bottom: 0px;
+    line-height: 100%;
   }
-
+  .projects-heading-title {
+  padding: 0px 48px 108px;
+}
+ .projects-heading-title::before {
+  transform: perspective(200px) rotateX(-55deg);
+ }
   .projects-heading-title h2 {
     font-size: 32px;
     text-align: left;
   }
-
+  .pro
   .project-card-image-container::after {
     display: none;
+  }
+  .project-grid {
+    margin-top: -130px;
   }
 }
 
 /* ==========================================================
-   ARROW ICON FOR PROJECT CARDS
+   ARROW (FINAL LOGIC)
    ========================================================== */
-
-/* Keyframes for the bobbing animation */
-@keyframes bobbing-arrow {
-  0% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, -5px);
-  }
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
-
-/* Arrow pseudo-element on each card */
-.project-card::after {
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='18 15 12 9 6 15'%3e%3c/polyline%3e%3c/svg%3e");
+.card-arrow-container {
   position: absolute;
-  bottom: 15px;
-  left: 50%;
-  color: #000000;
-  opacity: 0.7;
-  z-index: 5; /* Ensure it's above the image */
-  animation: bobbing-arrow 1.8s infinite ease-in-out;
+  left: 0; right: 0; bottom: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.3s ease;
 }
 
-/* Hide the arrow when the card is hovered/active */
-.project-card:hover::after,
-.project-card.active::after {
-  opacity: 0;
-  animation: none; /* Stop animation on hover */
+.card-arrow {
+  width: 24px;
+  height: 24px;
+  background: center / contain no-repeat
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='18 15 12 9 6 15'%3e%3c/polyline%3e%3c/svg%3e");
 }
