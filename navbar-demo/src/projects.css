@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 /* ==========================================================
-   GLOBAL BACKGROUND
+   GLOBAL STYLES
    ========================================================== */
 body, main {
-  background-color: #35f2ec !important;
+  background-color: rgb(193 193 193) !important;
   color: #111;
   margin: 0;
   padding: 0;
@@ -45,12 +45,11 @@ body, main {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #E52B2C, #7F1818);
-  border-radius: 20px 20px 5px 5px;
+  border-radius: 30px;
   transform: perspective(200px) rotateX(-35deg);
   transform-origin: top;
   z-index: -1;
 }
-
 
 .projects-heading-title h2 {
   font-size: 64px;
@@ -87,26 +86,38 @@ body, main {
   overflow: hidden;
   border-radius: 20px;
   background-color: whitesmoke;
-  border: 2px solid #00bfa5;
   padding: 8px;
-  transition:
-    transform 0.35s cubic-bezier(.25,.46,.45,1),
-    box-shadow 0.35s cubic-bezier(.25,.46,.45,1),
-    border-color 0.3s ease,
-    background-color 0.3s ease;
-  margin: 0 auto;
-  will-change: transform, box-shadow;
-  backface-visibility: hidden;
+  transition: all 0.35s cubic-bezier(.25,.46,.45,1);
+  margin: 0 auto 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card Notch */
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 60px;
+  background: rgb(193 193 193);
+  border-top: none;
+  border-radius: 50px 50px 0 0;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 /* ==========================================================
-   DESKTOP HOVER
+   CARD INTERACTIONS
    ========================================================== */
+/* Desktop Hover */
 @media (min-width: 1024px) {
   .project-card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
-    border-color: #30A6A8;
     background-color: #ffffff;
   }
 
@@ -119,15 +130,13 @@ body, main {
     opacity: 1;
   }
 
-  .project-card:hover .card-arrow-container {
+  .project-card:hover .card-arrow-container,
+  .project-card:hover::after {
     opacity: 0;
-    pointer-events: none;
   }
 }
 
-/* ==========================================================
-   CLICK LOGIC ON ALL DEVICES
-   ========================================================== */
+/* Active State */
 .project-card.active {
   transform: translateY(-3px) scale(1.01);
   box-shadow: 0 15px 30px rgba(0,0,0,.2);
@@ -142,19 +151,22 @@ body, main {
   opacity: 1;
 }
 
-/* Arrow hides when active */
-.project-card.active .card-arrow-container {
+.project-card.active .card-arrow-container,
+.project-card.active::after {
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
-/* ==========================================================
-   TABLET HOVER (LIGHT)
-   ========================================================== */
+/* Tablet Hover */
 @media (min-width: 768px) and (max-width: 1023px) {
   .project-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  }
+
+  .project-grid {
+    gap: 10px;
+    padding: 0 40px 40px;
   }
 
   .project-card-image-container::after {
@@ -176,61 +188,52 @@ body, main {
 }
 
 /* ==========================================================
-   IMAGE
+   CARD CONTENT
    ========================================================== */
+/* Image Container */
 .project-card-image-container {
   position: relative;
   width: 100%;
+  height: 280px;
   overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .project-card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   border-radius: 12px 12px 0 0;
   transition: transform 0.55s cubic-bezier(.22,1,.36,1);
 }
 
-/* ==========================================================
-   DESCRIPTION OVERLAY — AUTO FIT CONTENT
-   ========================================================== */
+/* Description Overlay */
 .description-overlay {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(5px);
-
   padding: 6px;
-
-  /* ❗ NEW: Auto fit the content */
   height: auto !important;
   max-height: 55% !important;
   min-height: 30%;
-
   border-top: 2px solid #ffffff;
-
   transform: translateY(100%);
   opacity: 0;
-
   transition:
     transform 0.4s cubic-bezier(.4,0,.2,1),
     opacity 0.3s ease-out;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   pointer-events: none;
   box-sizing: border-box;
 }
 
-/* ==========================================================
-   FORCED LEFT ALIGNMENT
-   ========================================================== */
+/* Text Alignment */
 .description-overlay,
 .description-overlay h3,
 .description-overlay p {
@@ -248,7 +251,7 @@ body, main {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 8px;
-  line-height: 1;
+  line-height: 1.4;
   color: black;
   margin-top: -4px;
 }
@@ -257,14 +260,47 @@ body, main {
   font-family: 'Poppins';
   font-weight: 300;
   font-size: 14px;
-  line-height: 100%;
+  line-height: 1.4;
   margin: 0;
   color: black;
 }
 
 /* ==========================================================
-   TABLET OVERLAY HEIGHT FIX (NO CUT-OFF)
+   ARROW COMPONENT
    ========================================================== */
+.card-arrow-container {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.card-arrow {
+  width: 32px;
+  height: 32px;
+  background: center / contain no-repeat url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3crect x='10' y='8' width='4' height='12'%3e%3c/rect%3e%3cpolygon points='12,2 20,10 4,10'%3e%3c/polygon%3e%3c/svg%3e");
+  transition: transform 0.3s ease;
+}
+
+/* Arrow rotation for active/hover states */
+.project-card.active .card-arrow,
+.project-card:hover .card-arrow {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================== */
+/* Tablet Overlay */
 @media (min-width: 768px) and (max-width: 1023px) {
   .description-overlay {
     height: auto !important;
@@ -279,17 +315,16 @@ body, main {
 
   .description-overlay p {
     font-size: 12px !important;
-    line-height: 100%;
+    line-height: 1.4 !important;
   }
 }
 
-/* ==========================================================
-   MOBILE VIEW
-   ========================================================== */
+/* Mobile */
 @media (max-width: 767px) {
   .project-grid {
     gap: 10px;
-    padding: 0 5px 40px;
+    padding: 0 40px 40px;
+    margin-top: -130px;
   }
 
   .description-overlay {
@@ -304,47 +339,35 @@ body, main {
 
   .description-overlay p {
     font-size: 8px;
-    line-height: 100%;
+    line-height: 1.4;
   }
+
   .projects-heading-title {
-  padding: 0px 48px 108px;
-}
- .projects-heading-title::before {
-  transform: perspective(200px) rotateX(-55deg);
- }
+    padding: 0px 64px 120px;
+  }
+
+  .projects-heading-title::before {
+    transform: perspective(300px) rotateX(-55deg);
+  }
+
   .projects-heading-title h2 {
     font-size: 32px;
     text-align: left;
   }
-  .pro
+
   .project-card-image-container::after {
     display: none;
   }
-  .project-grid {
-    margin-top: -130px;
-  }
 }
 
-/* ==========================================================
-   ARROW (FINAL LOGIC)
-   ========================================================== */
-.card-arrow-container {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Overlay backdrop for closing active cards */
+.project-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 10;
   cursor: pointer;
-  z-index: 5;
-  opacity: 1;
-  pointer-events: auto;
-  transition: opacity 0.3s ease;
-}
-
-.card-arrow {
-  width: 24px;
-  height: 24px;
-  background: center / contain no-repeat
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='18 15 12 9 6 15'%3e%3c/polyline%3e%3c/svg%3e");
 }

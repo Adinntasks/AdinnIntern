@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectCard from './projectcards.jsx';
@@ -11,6 +11,8 @@ const ProjectsSection = () => {
   const headingRef = useRef(null);
   const cardsRef = useRef(null);
   const [activeId, setActiveId] = useState(null);
+
+  // Removed global click handler - using backdrop instead
 
   const projects = [
     {
@@ -113,6 +115,14 @@ const ProjectsSection = () => {
           <h2>Projects</h2>
         </div>
       </div>
+
+      {/* Click overlay to close active cards */}
+      {activeId && (
+        <div
+          className="project-overlay-backdrop"
+          onClick={() => setActiveId(null)}
+        />
+      )}
 
       {/* Project Grid */}
       <div

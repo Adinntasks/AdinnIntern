@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
+import React from 'react';
+import './projects.css';
 
-const ProjectCard = ({ id, activeId, setActiveId, imageSrc, title, description, altTag }) => {
+const ProjectCard = ({
+  id,
+  activeId,
+  setActiveId,
+  imageSrc,
+  title,
+  description,
+  altTag,
+  notchRadius = 50
+}) => {
   const isActive = activeId === id;
+  const arrowSize = notchRadius * 0.6;
 
   const handleArrowClick = (e) => {
-    console.log('Arrow clicked');
-    e.stopPropagation(); // prevent card click from firing
+    e.stopPropagation();
     const newActiveId = activeId === id ? null : id;
     setActiveId(newActiveId);
   };
 
   return (
-    <Card
-      className={`project-card ${isActive ? 'active' : ''}`}
-    >
+    <div className={`project-card ${isActive ? 'active' : ''}`}>
       {/* Image Area */}
       <div className="project-card-image-container">
         <img
@@ -22,28 +29,38 @@ const ProjectCard = ({ id, activeId, setActiveId, imageSrc, title, description, 
           alt={altTag}
           className="project-card-image"
           loading="lazy"
-          onClick={(e) => { console.log('Image clicked'); e.stopPropagation(); }}
         />
 
-        {/* Description Overlay with Title */}
+        {/* Description Overlay */}
         <div className="description-overlay">
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
       </div>
+
+      {/* Arrow embedded in notch */}
       <div
-          className="card-arrow-container"
-          onClick={handleArrowClick}
-          role="button"
-          aria-label="Show details"
+        className="card-arrow-container"
+        onClick={handleArrowClick}
+        role="button"
+        aria-label="Show details"
+        style={{
+          width: `${notchRadius * 2}px`,
+          height: `${notchRadius}px`,
+          left: `calc(50% - ${notchRadius}px)`,
+        }}
       >
-          <div className="card-arrow"></div>
+        <div
+          className="card-arrow"
+          style={{
+            width: `${arrowSize}px`,
+            height: `${arrowSize}px`,
+          }}
+        />
       </div>
-    </Card>
+    </div>
   );
 };
-
-ProjectCard.displayName = "ProjectCard";
 
 export default ProjectCard;
 
