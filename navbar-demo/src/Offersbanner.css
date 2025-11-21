@@ -1,0 +1,61 @@
+.hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #f03a3a, #ff6363);
+  padding: 4rem 8%;
+  color: white;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.offer-text {
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.offer-btn {
+  background-color: #fff;
+  color: #d63333;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.offer-btn:hover {
+  background-color: #ffeaea;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}

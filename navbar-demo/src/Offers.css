@@ -1,0 +1,112 @@
+.offers-section {
+  padding: 2rem 8%;
+  background-color: #fff6f6;
+}
+
+.offers-section h2 {
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.offer-card {
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 0px;
+  position: relative;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.best-seller {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(180deg, #E52B2C 0%, #7F1818 100%);
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-top-left-radius: 28.14px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 28.14px;
+  font-weight: 600;
+}
+
+.offer-card img {
+  width: 100%;
+  border-radius: 40px;
+  margin-bottom: 0;
+}
+
+.offer-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.offer-card p {
+  margin: 0.3rem 0;
+  color: #444;
+}
+
+.price {
+  font-weight: 600;
+  color: #222;
+}
+
+.rating {
+  background-color: #1d8131;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 0.5rem 0;
+}
+
+.view-btn {
+  background: linear-gradient(180deg, #E54472 0%, #BE1344 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #ff6f6f;
+}
+.offers-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+
+.offers-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.offers-carousel::-webkit-scrollbar-thumb {
+  background-color: #ff4d4d;
+  border-radius: 10px;
+}
+
+.offers-carousel::-webkit-scrollbar-track {
+  background: #ffeaea;
+  border-radius: 10px;
+}

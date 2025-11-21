@@ -7,6 +7,8 @@ import Navbar from "./a1Navbar";
 import Footer from "./a3Footer";
 import Project from "./projects";
 import ScrollHero from "./ScrollHero";
+import Offers from "./Offers"
+import Offersbanner from "./Offersbanner"
 
 
 function App() {
@@ -34,10 +36,10 @@ function App() {
       <div className="bg-white w-full shadow-md">
         <Navbar />
       </div>
-      <div><ScrollHero /></div>
+      <div><Offersbanner/></div>
       {/* ✅ MAIN CONTENT AREA with gradient background */}
       <main className="bg-gradient-to-br from-[#e8f4f8] via-[#d1ecf1] to-[#b8e6f0] min-h-screen px-8 py-12">
-        <Project />
+        <Offers />
       </main>
 
       {/* ✅ Footer stays at the bottom */}
