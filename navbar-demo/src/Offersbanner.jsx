@@ -14,7 +14,7 @@ const Offersbanner = () => {
       </div>
       <div className="hero-image">
         <img
-          src=".\public\images\Bannertruck.png"
+          src="/images/Bannertruck.png"
           alt="Offer Truck"
         />
       </div>

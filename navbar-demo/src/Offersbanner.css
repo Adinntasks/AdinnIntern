@@ -7,7 +7,6 @@
   color: white;
   flex-wrap: wrap;
   border-radius: 12px;
-  margin-bottom: 4rem;
 }
 
 .hero-content {
@@ -23,7 +22,7 @@
 
 .hero-content p {
   font-size: 1.1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .offer-text {

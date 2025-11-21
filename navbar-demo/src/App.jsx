@@ -16,17 +16,17 @@ function App() {
     {
       path: '/home',
       text: 'Home',
-      icon: './images/homeicon.png',
+      icon: '/images/NavbarIcon1.png',
     },
     {
       path: '/about',
       text: 'About Us',
-      icon: './images/aboutusicon.png',
+      icon: '/images/NavbarIcon2.png',
     },
     {
       path: '/projects',
       text: 'Projects',
-      icon: './images/projectsicon.png',
+      icon: '/images/NavbarIcon3.png',
     },
   ];
 
@@ -38,7 +38,7 @@ function App() {
       </div>
       <div><Offersbanner/></div>
       {/* ✅ MAIN CONTENT AREA with gradient background */}
-      <main className="bg-gradient-to-br from-[#e8f4f8] via-[#d1ecf1] to-[#b8e6f0] min-h-screen px-8 py-12">
+      <main className="bg-gradient-to-br from-[#e8f4f8] via-[#d1ecf1] to-[#b8e6f0] min-h-screen px-8 py-3">
         <Offers />
       </main>
 
