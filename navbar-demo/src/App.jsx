@@ -36,9 +36,14 @@ function App() {
       <div className="bg-white w-full shadow-md">
         <Navbar />
       </div>
-      <div><Offersbanner/></div>
+      
+      {/* ✅ ScrollHero with proper positioning context */}
+      <div className="scroll-hero-container">
+        <ScrollHero/>
+      </div>
+      
       {/* ✅ MAIN CONTENT AREA with gradient background */}
-      <main className="bg-gradient-to-br from-[#e8f4f8] via-[#d1ecf1] to-[#b8e6f0] min-h-screen px-8 py-3">
+      <main className="bg-gradient-to-br from-[#e8f4f8] via-[#d1ecf1] to-[#b8e6f0] min-h-screen px-8 py-3 relative z-10">
         <Offers />
       </main>
 

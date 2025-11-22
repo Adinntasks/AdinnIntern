@@ -2,7 +2,7 @@
    DESKTOP HORIZONTAL HERO
 =================================================================== */
 .desktop-hero-container {
-  height: 75vh;
+  height: 100vh;
   width: 100%;
   background: #000;
   position: relative;
@@ -207,6 +207,18 @@
 
 @media (max-width: 767px) {
   .desktop-hero-container {
-    display: none;
+    display: none !important;
+  }
+  .mobile-carousel-container {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-carousel-container {
+    display: none !important;
+  }
+  .desktop-hero-container {
+    display: block !important;
   }
 }

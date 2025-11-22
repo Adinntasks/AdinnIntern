@@ -40,29 +40,42 @@
   color: #888;
 }
 /* ==========================================================
-   🔧 Full-height layout: navbar + flexible content + sticky footer
+   🔧 Layout for ScrollHero1 component
 ========================================================== */
 
-/* Ensure root elements fill the viewport */
-html,
-body,
-#root {
-  height: 100%;
+/* Reset for proper scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Flex container for entire app */
+/* Keep root as block to allow ScrollHero positioning */
 #root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* takes up full viewport height */
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative; /* Allow absolute positioning for ScrollHero */
 }
 
-/* Main content now handled by App.jsx structure */
+/* Allow ScrollHero1 to break out of flexbox flow when needed */
+.scroll-hero-container {
+  position: relative;
+  width: 100%;
+}
 
-/* Footer remains at the bottom naturally */
+/* Ensure main content appears below ScrollHero1 */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+/* Footer positioning */
 .RdFooterMain {
-  flex-shrink: 0; /* ensures footer does not shrink */
-  margin-top: auto; /* ensures footer pushes to bottom */
+  position: relative;
+  z-index: 10; /* Keep footer above fixed elements */
 }
