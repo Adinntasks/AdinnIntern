@@ -39,7 +39,7 @@ function App() {
       
       {/* ✅ ScrollHero with proper positioning context */}
       <div className="scroll-hero-container">
-        <ScrollHero/>
+        <Offersbanner/>
       </div>
       
       {/* ✅ MAIN CONTENT AREA with gradient background */}

@@ -1,7 +1,7 @@
 .hero-banner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   background: linear-gradient(90deg, #f03a3a, #ff6363);
   padding: 4rem 8%;
   color: white;
