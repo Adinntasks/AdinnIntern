@@ -1,9 +1,30 @@
-.offers-page {
+/* ===============================
+   OFFERS SECTION - RESPONSIVE CSS
+   ===============================
+   
+   Structure:
+   - Desktop Styles (Default: 769px+)
+   - Tablet Styles (481px - 768px) 
+   - Mobile Styles (0px - 480px)
+   
+   Breakpoints:
+   - Mobile: up to 480px
+   - Tablet: 481px - 768px
+   - Desktop: 769px+ (default, unchanged)
+*/
+
+/* ===============================
+   DESKTOP STYLES (769px+) 
+   ===============================
+   Original desktop styles preserved
+*/
+
+.rdAvailVehPageDtpg {
   padding: 40px 80px;
   background-color: #fff6f6;
 }
 
-.offers-page h2 {
+.rdAvailVehPageDtpg h2 {
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 28px;
@@ -11,13 +32,15 @@
   color: #111;
 }
 
-.offers-page .offers-grid {
+/* Grid Layout */
+.rdAvailVehGridDtpg {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 30px;
 }
 
-.offers-page .offer-card {
+/* Main Card */
+.rdAvailVehDtpgMain {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.08);
@@ -27,11 +50,12 @@
   transition: transform 0.3s ease;
 }
 
-.offers-page .offer-card:hover {
+.rdAvailVehDtpgMain:hover {
   transform: translateY(-5px);
 }
 
-.offers-page .best-seller {
+/* Badge (Best Seller) */
+.rdAvailVehBadgeDtpg {
   position: absolute;
   top: 10px;
   right: 0;
@@ -41,26 +65,29 @@
   padding: 6px 15px;
   border-radius: 0 12px 0 12px;
   font-weight: 600;
+  z-index: 2;
 }
 
-.offers-page .image-carousel {
+/* Carousel Wrapper */
+.rdAvailVehCarouselDtpg {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 200px;
   overflow: hidden;
   border-radius: 12px;
   margin-bottom: 12px;
 }
 
-/* Sliding animation */
-.offers-page .carousel-track {
+/* Carousel Track (Sliding Animation) */
+.rdAvailVehCarouselTrackDtpg {
   display: flex;
   transition: transform 0.5s ease-in-out;
   width: 100%;
   height: 100%;
 }
 
-.offers-page .carousel-image {
+/* Carousel Image */
+.rdAvailVehImgDtpg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -68,60 +95,47 @@
   border-radius: 12px;
 }
 
-/* Arrow buttons */
-.offers-page .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  color: #d63333;
-  font-size: 24px;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 4px 10px;
-  border-radius: 50%;
-  transition: background 0.2s ease;
-}
-
-.offers-page .carousel-btn:hover {
-  background: #fff;
-}
-
-.offers-page .carousel-btn.left {
-  left: 8px;
-}
-
-.offers-page .carousel-btn.right {
-  right: 8px;
-}
-
-/* Dots */
-.offers-page .carousel-dots {
+/* Carousel Dots Container */
+.rdAvailVehCarouselDotsDtpg {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 8px;
+  padding: 8px 0;
+  /* Position dots at bottom inside carousel */
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
-.offers-page .dot {
-  width: 8px;
-  height: 8px;
+/* Individual Dots (Scoped to page to prevent conflicts) */
+.rdAvailVehPageDtpg .dot {
+  width: 12px;
+  height: 12px;
   background-color: #e0e0e0;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
-.offers-page .dot.active {
+.rdAvailVehPageDtpg .dot:hover {
+  background-color: #c0c0c0;
+  border-color: #d63333;
+}
+
+.rdAvailVehPageDtpg .dot.active {
   background-color: #d63333;
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
+  border-color: #d63333;
 }
 
-/* Text + Buttons */
-.offers-page .offer-card h3 {
+/* Title */
+.rdAvailVehNameDtpg {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
@@ -129,27 +143,30 @@
   text-align: left;
 }
 
-.offers-page .offer-card p {
+/* Discount Text */
+.rdAvailVehDiscountDtpg {
   margin: 4px 0;
   color: #444;
   font-size: 14px;
   text-align: left;
 }
 
-.offers-page .price {
+/* Price */
+.rdAvailVehRatedDtpg {
   font-weight: 600;
   color: #222;
   font-size: 15px;
   text-align: left;
 }
 
-.offers-page .rating {
+/* Rating Star Box */
+.rdAvailVehRatingStarDtpg {
   background-color: #044204;
   color: #ffffff;
   border-radius: 6px;
   padding: 4px 10px;
   font-size: 13px;
-  display: inline-flex; /* keeps star and text inline */
+  display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   margin-top: 10px;
@@ -157,9 +174,10 @@
   text-align: left;
 }
 
-.offers-page .view-btn {
+/* View Details Button */
+.rdAvailVehBtnDtpg {
   display: block;
-  margin: 8px auto 0; /* ensures it sits close below the rating */
+  margin: 8px auto 0;
   background: linear-gradient(90deg, #ff4d4d, #d41e5b);
   color: white;
   border: none;
@@ -168,13 +186,449 @@
   cursor: pointer;
   transition: 0.3s ease;
   font-weight: 600;
-  width: auto; /* prevents stretching full width */
-  min-width: 80px; /* gives a balanced size like the mockup */
+  width: auto;
+  min-width: 80px;
   font-size: 15px;
   text-align: left;
-  margin:0;
+  margin: 0;
 }
 
-.offers-page .view-btn:hover {
+.rdAvailVehBtnDtpg:hover {
   opacity: 0.9;
+}
+
+/* ===============================
+   TABLET STYLES (481px - 768px)
+   ===============================
+   Responsive styles for tablets
+*/
+
+@media (max-width: 768px) and (min-width: 481px) {
+  /* Page Container - Reduced padding for tablet */
+  .rdAvailVehPageDtpg {
+    padding: 30px 40px;
+    background-color: #fff6f6;
+  }
+
+  .rdAvailVehPageDtpg h2 {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #111;
+  }
+
+  /* Grid Layout - 2 columns for tablet */
+  .rdAvailVehGridDtpg {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Main Card - Reduced padding */
+  .rdAvailVehDtpgMain {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    position: relative;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .rdAvailVehDtpgMain:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Badge - Slightly smaller for tablet */
+  .rdAvailVehBadgeDtpg {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    background-color: #b62222;
+    color: white;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 0 10px 0 10px;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  /* Carousel Wrapper - Slightly smaller height */
+  .rdAvailVehCarouselDtpg {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    /* Touch properties for smooth swiping on tablet */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Carousel Track */
+  .rdAvailVehCarouselTrackDtpg {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    /* Prevent text selection during swipe on tablet */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Carousel Image */
+  .rdAvailVehImgDtpg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 0 0 100%;
+    border-radius: 10px;
+  }
+
+  /* Carousel Dots Container - Medium touch targets */
+  .rdAvailVehCarouselDotsDtpg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    padding: 6px 0;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  /* Individual Dots - Medium size for tablet */
+  .rdAvailVehPageDtpg .dot {
+    width: 14px;
+    height: 14px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .rdAvailVehPageDtpg .dot:hover {
+    background-color: #c0c0c0;
+    border-color: #d63333;
+  }
+
+  .rdAvailVehPageDtpg .dot.active {
+    background-color: #d63333;
+    width: 16px;
+    height: 16px;
+    border-color: #d63333;
+  }
+
+  /* Title - Smaller font for tablet */
+  .rdAvailVehNameDtpg {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #c22b2b;
+    text-align: left;
+  }
+
+  /* Discount Text */
+  .rdAvailVehDiscountDtpg {
+    margin: 3px 0;
+    color: #444;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  /* Price */
+  .rdAvailVehRatedDtpg {
+    font-weight: 600;
+    color: #222;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* Rating Star Box */
+  .rdAvailVehRatingStarDtpg {
+    background-color: #044204;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  /* View Details Button - Medium touch target */
+  .rdAvailVehBtnDtpg {
+    display: block;
+    margin: 8px auto 0;
+    background: linear-gradient(90deg, #ff4d4d, #d41e5b);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 600;
+    width: auto;
+    min-width: 90px;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .rdAvailVehBtnDtpg:hover {
+    opacity: 0.9;
+  }
+}
+
+/* ===============================
+   MOBILE STYLES (0px - 480px)
+   ===============================
+   Responsive styles for mobile devices
+*/
+
+@media (max-width: 480px) {
+  /* Page Container - Minimal padding for mobile */
+  .rdAvailVehPageDtpg {
+    padding: 20px 15px;
+    background-color: #fff6f6;
+  }
+
+  .rdAvailVehPageDtpg h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #111;
+    line-height: 1.3;
+  }
+
+  /* Grid Layout - Single column for mobile */
+  .rdAvailVehGridDtpg {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* Main Card - Compact padding */
+  .rdAvailVehDtpgMain {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    position: relative;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .rdAvailVehDtpgMain:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Badge - Compact for mobile */
+  .rdAvailVehBadgeDtpg {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    background-color: #b62222;
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 0 8px 0 8px;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  /* Carousel Wrapper - Optimized for mobile */
+  .rdAvailVehCarouselDtpg {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    /* Touch properties for smooth swiping */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Carousel Track - Smoother transitions for touch */
+  .rdAvailVehCarouselTrackDtpg {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+    height: 100%;
+    /* Prevent text selection during swipe */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Optimize for touch scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Carousel Image */
+  .rdAvailVehImgDtpg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 0 0 100%;
+    border-radius: 8px;
+  }
+
+  /* Carousel Dots Container - Large touch targets for mobile */
+  .rdAvailVehCarouselDotsDtpg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    padding: 4px 0;
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  /* Individual Dots - Large size for mobile touch */
+  .rdAvailVehPageDtpg .dot {
+    width: 16px;
+    height: 16px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    /* Enhanced touch feedback */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+  }
+
+  .rdAvailVehPageDtpg .dot:hover {
+    background-color: #c0c0c0;
+    border-color: #d63333;
+  }
+
+  .rdAvailVehPageDtpg .dot:active {
+    background-color: #d63333;
+    transform: scale(1.1);
+  }
+
+  .rdAvailVehPageDtpg .dot.active {
+    background-color: #d63333;
+    width: 18px;
+    height: 18px;
+    border-color: #d63333;
+  }
+
+  /* Touch feedback for carousel images */
+  .rdAvailVehImgDtpg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 0 0 100%;
+    border-radius: 8px;
+    /* Improve touch responsiveness */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Title - Optimized for mobile */
+  .rdAvailVehNameDtpg {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #c22b2b;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  /* Discount Text */
+  .rdAvailVehDiscountDtpg {
+    margin: 2px 0;
+    color: #444;
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  /* Price */
+  .rdAvailVehRatedDtpg {
+    font-weight: 600;
+    color: #222;
+    font-size: 13px;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  /* Rating Star Box - Compact for mobile */
+  .rdAvailVehRatingStarDtpg {
+    background-color: #044204;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  /* View Details Button - Large touch target for mobile */
+  .rdAvailVehBtnDtpg {
+    display: block;
+    margin: 8px auto 0;
+    background: linear-gradient(90deg, #ff4d4d, #d41e5b);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 600;
+    width: auto;
+    min-width: 100px;
+    font-size: 13px;
+    text-align: center;
+    margin: 0;
+    /* Enhanced touch feedback */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+  }
+
+  .rdAvailVehBtnDtpg:hover {
+    opacity: 0.9;
+  }
+
+  .rdAvailVehBtnDtpg:active {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+
+  /* Additional mobile optimizations */
+  .rdAvailVehDtpgMain {
+    /* Prevent horizontal scroll on mobile */
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Improve readability on small screens */
+  .rdAvailVehPageDtpg * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

@@ -1,3 +1,24 @@
+/* ===============================
+   OFFERS BANNER - RESPONSIVE CSS
+   ===============================
+   
+   Structure:
+   - Desktop Styles (Default: 769px+)
+   - Tablet Styles (481px - 768px) 
+   - Mobile Styles (0px - 480px)
+   
+   Breakpoints:
+   - Mobile: up to 480px
+   - Tablet: 481px - 768px
+   - Desktop: 769px+ (default, unchanged)
+*/
+
+/* ===============================
+   DESKTOP STYLES (769px+) 
+   ===============================
+   Original desktop styles preserved
+*/
+
 .hero-banner {
   display: flex;
   justify-content: space-between;
@@ -57,4 +78,185 @@
   width: 100%;
   max-width: 500px;
   border-radius: 12px;
+}
+
+/* ===============================
+   TABLET STYLES (481px - 768px)
+   ===============================
+   Responsive styles for tablets
+*/
+
+@media (max-width: 768px) and (min-width: 481px) {
+  /* Banner Container - Reduced padding for tablet */
+  .hero-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    background: linear-gradient(90deg, #f03a3a, #ff6363);
+    padding: 3rem 6%;
+    color: white;
+    flex-wrap: wrap;
+    border-radius: 10px;
+  }
+
+  /* Content Area - More compact for tablet */
+  .hero-content {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  /* Offer Text - Smaller but still prominent */
+  .offer-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 1.25rem;
+    line-height: 1;
+  }
+
+  /* Button - Medium touch target for tablet */
+  .offer-btn {
+    background-color: #fff;
+    color: #d63333;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+
+  .offer-btn:hover {
+    background-color: #ffeaea;
+  }
+
+  /* Hero Image - Slightly smaller for tablet */
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+}
+
+/* ===============================
+   MOBILE STYLES (0px - 480px)
+   ===============================
+   Responsive styles for mobile devices
+*/
+
+@media (max-width: 480px) {
+  /* Banner Container - Stacked layout for mobile */
+  .hero-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #f03a3a, #ff6363);
+    padding: 1.5rem 4%;
+    color: white;
+    flex-wrap: nowrap;
+    border-radius: 8px;
+  }
+
+  /* Content Area - Full width, centered for mobile */
+  .hero-content {
+    flex: 1;
+    max-width: 55%;
+    min-width: 45%;
+  }
+
+  .hero-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  /* Offer Text - Optimized for mobile screens */
+  .offer-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  /* Button - Large touch target for mobile */
+  .offer-btn {
+    background-color: #fff;
+    color: #d63333;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 0.9rem;
+    min-width: 120px;
+    /* Enhanced touch feedback */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+  }
+
+  .offer-btn:hover {
+    background-color: #ffeaea;
+  }
+
+  .offer-btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  /* Hero Image - Smaller and centered for mobile */
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 45%;
+    min-width: 35%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  /* Additional mobile optimizations */
+  .hero-banner * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
 }

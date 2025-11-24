@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers Carousel Mobile Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-pass { border-color: #28a745; background-color: #f8fff9; }
+        .test-fail { border-color: #dc3545; background-color: #fff8f8; }
+        .test-info { border-color: #17a2b8; background-color: #f8feff; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .device-info {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚗 Offers Carousel Mobile Circular Navigation Test</h1>
+    
+    <div class="device-info">
+        <h3>📱 Device Information</h3>
+        <div id="deviceInfo"></div>
+    </div>
+
+    <div class="test-section test-info">
+        <h3>✅ Fixed Issues Summary</h3>
+        <ul>
+            <li><strong>Touch Detection:</strong> Now more flexible - detects any touch-capable device</li>
+            <li><strong>Mouse Support:</strong> Added mouse drag testing for desktop development</li>
+            <li><strong>Transition Logic:</strong> Improved boundary handling for seamless circular navigation</li>
+            <li><strong>Mobile CSS:</strong> Enhanced touch properties and responsive design</li>
+        </ul>
+    </div>
+
+    <div class="test-section test-pass">
+        <h3>✅ Test Cases for Mobile</h3>
+        <ol>
+            <li><strong>Touch Device Detection:</strong> Swipe gestures should work on phones/tablets</li>
+            <li><strong>Circular Navigation:</strong> Swiping left at last image → first image</li>
+            <li><strong>Circular Navigation:</strong> Swiping right at first image → last image</li>
+            <li><strong>Responsive Breakpoints:</strong> Test on mobile (≤480px), tablet (481-768px), desktop (≥769px)</li>
+            <li><strong>Dot Navigation:</strong> All carousel dots should work correctly</li>
+            <li><strong>Smooth Transitions:</strong> No visual glitches during circular transitions</li>
+        </ol>
+    </div>
+
+    <div class="test-section test-pass">
+        <h3>✅ Test Cases for Desktop</h3>
+        <ol>
+            <li><strong>Mouse Drag:</strong> Click and drag to navigate carousel</li>
+            <li><strong>Touch Simulation:</strong> Test responsive design using browser dev tools</li>
+            <li><strong>Dot Navigation:</strong> All carousel dots should work correctly</li>
+            <li><strong>Responsive Design:</strong> Resize browser to test breakpoints</li>
+        </ol>
+    </div>
+
+    <div class="test-section test-info">
+        <h3>🔧 Implementation Details</h3>
+        <h4>Touch Detection (More Flexible)</h4>
+        <code>
+        // OLD: Too restrictive
+        setIsTouchDevice(isTouchCapable && isMobileOrTabletSize);
+        
+        // NEW: More flexible  
+        setIsTouchDevice(isTouchCapable);
+        </code>
+        
+        <h4>Mouse Support Added</h4>
+        <code>
+        onMouseDown={!isTouchDevice ? handleMouseDown : undefined}
+        onMouseMove={!isTouchDevice ? handleMouseMove : undefined}
+        onMouseUp={!isTouchDevice ? handleMouseUp : undefined}
+        </code>
+        
+        <h4>CSS Touch Optimizations</h4>
+        <code>
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        </code>
+    </div>
+
+    <div class="test-section test-pass">
+        <h3>🎯 Expected Results</h3>
+        <ul>
+            <li><strong>Mobile Devices:</strong> Smooth swipe navigation with circular behavior</li>
+            <li><strong>Desktop:</strong> Mouse drag navigation works for testing</li>
+            <li><strong>All Breakpoints:</strong> Responsive design works correctly</li>
+            <li><strong>No Visual Glitches:</strong> Seamless transitions between first↔last images</li>
+            <li><strong>Touch Feedback:</strong> Visual feedback on touch interactions</li>
+        </ul>
+    </div>
+
+    <script>
+        // Display device information
+        function displayDeviceInfo() {
+            const info = document.getElementById('deviceInfo');
+            const isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const screenSize = `${screen.width}x${screen.height}`;
+            const viewportSize = `${window.innerWidth}x${window.innerHeight}`;
+            
+            info.innerHTML = `
+                <strong>Screen Size:</strong> ${screenSize}<br>
+                <strong>Viewport:</strong> ${viewportSize}<br>
+                <strong>Touch Capable:</strong> ${isTouchCapable ? 'Yes' : 'No'}<br>
+                <strong>User Agent:</strong> ${navigator.userAgent}
+            `;
+        }
+        
+        displayDeviceInfo();
+        window.addEventListener('resize', displayDeviceInfo);
+    </script>
+</body>
+</html>

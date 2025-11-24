@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ScrollHero1.css";
+import "./ScrollHero.css";
 
 export default function ScrollHero() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -126,14 +126,47 @@ export default function ScrollHero() {
   };
 
   /* -----------------------------------------------------------
-      MOBILE CAROUSEL (fully isolated)
+      MOBILE CAROUSEL (fully isolated with swipe support)
   ------------------------------------------------------------ */
   const nextSlide = () => setCurrentSlide((p) => (p + 1) % heroImages.length);
   const prevSlide = () => setCurrentSlide((p) => (p === 0 ? heroImages.length - 1 : p - 1));
   const goToSlide = (i) => setCurrentSlide(i);
 
+  // Touch/swipe gesture handling
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // Minimum swipe distance (in pixels)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null); // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide(); // Swipe left - go to next slide (circular)
+    } else if (isRightSwipe) {
+      prevSlide(); // Swipe right - go to previous slide (circular)
+    }
+  };
+
   const MobileCarousel = () => (
-    <div className="mobile-carousel-container">
+    <div className="mobile-carousel-container"
+         onTouchStart={onTouchStart}
+         onTouchMove={onTouchMove}
+         onTouchEnd={onTouchEnd}>
       <div
         className="mobile-carousel-track"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -155,12 +188,13 @@ export default function ScrollHero() {
             key={i}
             className={`carousel-dot ${i === currentSlide ? "active" : ""}`}
             onClick={() => goToSlide(i)}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
 
-      <button className="carousel-arrow prev" onClick={prevSlide}>‹</button>
-      <button className="carousel-arrow next" onClick={nextSlide}>›</button>
+      <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Previous slide">‹</button>
+      <button className="carousel-arrow next" onClick={nextSlide} aria-label="Next slide">›</button>
     </div>
   );
 
