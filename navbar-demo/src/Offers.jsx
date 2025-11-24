@@ -249,8 +249,8 @@ const OfferCard = ({ offer }) => {
         </div>
       </div>
 
-      {/* Details Wrapper from Image */}
-      <div className="rdAvailVehDetailsDtpg">
+      {/* CHANGED: Use rdAvailVehContent instead of rdAvailVehDetailsDtpg */}
+      <div className="rdAvailVehContent">
         
         {/* Title Class from Image */}
         <div className="rdAvailVehNameDtpg">{offer.title}</div>

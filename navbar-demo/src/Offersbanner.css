@@ -77,7 +77,14 @@
 .hero-image img {
   width: 100%;
   max-width: 500px;
-  border-radius: 12px;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center center;
+  /* Seamless integration - no border separation */
+  border: none;
+  /* Ensure images maintain aspect ratio while filling container */
+  min-height: 100%;
+  min-width: 100%;
 }
 
 /* ===============================
@@ -156,7 +163,14 @@
   .hero-image img {
     width: 100%;
     max-width: 400px;
-    border-radius: 10px;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center center;
+    /* Seamless integration for tablet - no border separation */
+    border: none;
+    /* Ensure images maintain aspect ratio while filling container */
+    min-height: 100%;
+    min-width: 100%;
   }
 }
 
@@ -248,8 +262,14 @@
     width: 100%;
     max-width: 200px;
     height: auto;
-    object-fit: contain;
-    border-radius: 8px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 0;
+    /* Seamless integration for mobile - no border separation */
+    border: none;
+    /* Ensure images maintain aspect ratio while scaling optimally */
+    min-height: 100%;
+    min-width: 100%;
   }
 
   /* Additional mobile optimizations */
