@@ -1,0 +1,100 @@
+/* GENERIC MOBILE CINEMA LAYOUT 
+   ----------------------------
+   Copy this into your existing codebase.
+   Apply these classes to your HTML structure to replicate the 
+   "Split Screen" logic found in the ScrollHero.
+*/
+
+/* 1. The Main Wrapper */
+.split-screen-container {
+  /* Default Desktop Behavior: Long scroll height */
+  height: 400vh; 
+  position: relative;
+}
+
+/* 2. The Sticky Viewport */
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  
+  /* Flex column prepares for the mobile split */
+  display: flex;
+  flex-direction: column; 
+}
+
+/* 3. The Top Media Pane (Images/Video) */
+.media-pane {
+  /* Desktop: Full height */
+  height: 100%; 
+  width: max-content;
+  display: flex;
+  will-change: transform;
+}
+
+/* 4. The Bottom Context Pane (Text/Header) */
+.context-pane {
+  display: none; /* Hidden on Desktop usually */
+}
+
+/* --- MOBILE RESPONSIVE LOGIC (The "Cinema" Mode) --- */
+@media (max-width: 768px) {
+  
+  .split-screen-container {
+    /* Adjusted for faster mobile scrolling */
+    height: 300vh; 
+  }
+
+  .sticky-viewport {
+    height: 100vh;
+    background: #ffffff; /* Matches content background */
+  }
+
+  /* MODIFICATION: 60/40 Split for better visual impact */
+  
+  /* Top 60% - The Media */
+  .media-pane {
+    height: 60vh; 
+    /* Optional: Add snap behavior if using native scroll instead of JS transform */
+    scroll-snap-type: x mandatory; 
+  }
+
+  /* Items inside the media pane */
+  .media-pane > div {
+    /* Ensure flex items center content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000; /* Cinema bars */
+  }
+
+  /* Bottom 40% - The Context */
+  .context-pane {
+    display: flex;
+    height: 40vh; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    z-index: 20; /* Ensure it sits above visual glitches */
+  }
+
+  /* Typography improvements for the context pane */
+  .context-pane h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .context-pane p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    max-width: 90%;
+  }
+}

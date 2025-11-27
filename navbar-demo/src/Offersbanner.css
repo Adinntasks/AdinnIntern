@@ -1,282 +1,249 @@
-/* ===============================
-   OFFERS BANNER - RESPONSIVE CSS
-   ===============================
-   
-   Structure:
-   - Desktop Styles (Default: 769px+)
-   - Tablet Styles (481px - 768px) 
-   - Mobile Styles (0px - 480px)
-   
-   Breakpoints:
-   - Mobile: up to 480px
-   - Tablet: 481px - 768px
-   - Desktop: 769px+ (default, unchanged)
-*/
+/* =========================================
+   OFFERS BANNER - SIMPLE & STRICT CSS
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
 
-/* ===============================
-   DESKTOP STYLES (769px+) 
-   ===============================
-   Original desktop styles preserved
-*/
-
-.hero-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  background: linear-gradient(90deg, #f03a3a, #ff6363);
-  padding: 4rem 8%;
-  color: white;
-  flex-wrap: wrap;
-  border-radius: 12px;
+:root {
+  --banner-red: #c9252c;
+  --banner-dark-red: #9e1b22;
 }
 
-.hero-content {
-  flex: 1;
-  max-width: 500px;
-}
+/* --- 1. DESKTOP STYLES (Default / > 1024px) --- */
 
-.hero-content h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-}
-
-.offer-text {
-  font-size: 5rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  margin-bottom: 1.5rem;
-}
-
-.offer-btn {
-  background-color: #fff;
-  color: #d63333;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.offer-btn:hover {
-  background-color: #ffeaea;
-}
-
-.hero-image {
-  flex: 1;
+.hero-banner-wrapper {
+  width: 100%;
+  background: linear-gradient(135deg, var(--banner-red) 30%, var(--banner-dark-red) 100%);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-.hero-image img {
+.hero-banner-container {
   width: 100%;
-  max-width: 500px;
-  border-radius: 0;
-  object-fit: cover;
-  object-position: center center;
-  /* Seamless integration - no border separation */
+  max-width: 1400px;
+  min-height: 550px;
+  display: flex; /* Side by side */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Left Text Section */
+.hero-text-section {
+  flex: 1;
+  padding-left: 50px;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  font-family: Poppins;
+  color: white;
+  margin: 0 0 15px 0;
+  line-height: 1.1;
+  margin-top: -120px;
+  text-align: left;
+}
+
+.hero-subtitle {
+  font-size: 30px;
+  font-family: Poppins;
+  color: #fff;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  margin-bottom: 100px;
+  text-align: left;
+}
+
+/* Wrapper for "OFFER" text and Button */
+.hero-cta-wrapper {
+  position: relative;
+  margin-top: 10px;
+  height: 100px; /* Space for the stack */
+  display: flex;
+  align-items: center;
+}
+
+/* The Background Text */
+.hero-offer-text {
+  font-size: 160px;
+  font-weight: 900;
+  font-family: Poppins;
+  background: linear-gradient(360deg, rgba(255, 255, 255, 0) 26.67%, #FFFFFF 76.88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #833ab4; /* Fallback color */
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  user-select: none;
+  text-align: left;
+  margin-top: -60px;
+}
+
+/* The Button */
+.hero-offer-btn {
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: 900;
+  color: #b01a20;
+  background: white;
+  padding: 14px 32px;
   border: none;
-  /* Ensure images maintain aspect ratio while filling container */
-  min-height: 100%;
-  min-width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 30px; /* Offset to center over text */
+  position: relative;
+  z-index: 2; /* Sits on top */
+  box-shadow: 0 5px 15px rgba(110, 93, 93, 0.2);
+  margin-top: 100px;
+  display: flex;
+  align-self: flex-start;
 }
 
-/* ===============================
-   TABLET STYLES (481px - 768px)
-   ===============================
-   Responsive styles for tablets
-*/
-
-@media (max-width: 768px) and (min-width: 481px) {
-  /* Banner Container - Reduced padding for tablet */
-  .hero-banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    background: linear-gradient(90deg, #f03a3a, #ff6363);
-    padding: 3rem 6%;
-    color: white;
-    flex-wrap: wrap;
-    border-radius: 10px;
-  }
-
-  /* Content Area - More compact for tablet */
-  .hero-content {
-    flex: 1;
-    max-width: 400px;
-  }
-
-  .hero-content h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    line-height: 1.2;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-  }
-
-  /* Offer Text - Smaller but still prominent */
-  .offer-text {
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin-bottom: 1.25rem;
-    line-height: 1;
-  }
-
-  /* Button - Medium touch target for tablet */
-  .offer-btn {
-    background-color: #fff;
-    color: #d63333;
-    font-weight: 600;
-    padding: 1rem 2.5rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease;
-    font-size: 1rem;
-    min-width: 140px;
-  }
-
-  .offer-btn:hover {
-    background-color: #ffeaea;
-  }
-
-  /* Hero Image - Slightly smaller for tablet */
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 0;
-    object-fit: cover;
-    object-position: center center;
-    /* Seamless integration for tablet - no border separation */
-    border: none;
-    /* Ensure images maintain aspect ratio while filling container */
-    min-height: 100%;
-    min-width: 100%;
-  }
+/* Right Image Section */
+.hero-image-section {
+  flex: 1.2;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* ===============================
-   MOBILE STYLES (0px - 480px)
-   ===============================
-   Responsive styles for mobile devices
-*/
+.hero-truck-img {
+  display: block;
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+  transform: scale(1.05); /* Slight zoom for effect */
+  transform-origin: right center;
+  margin-right: -60px;
+}
 
-@media (max-width: 480px) {
-  /* Banner Container - Stacked layout for mobile */
-  .hero-banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, #f03a3a, #ff6363);
-    padding: 1.5rem 4%;
-    color: white;
-    flex-wrap: nowrap;
-    border-radius: 8px;
-  }
-
-  /* Content Area - Full width, centered for mobile */
-  .hero-content {
-    flex: 1;
-    max-width: 55%;
-    min-width: 45%;
-  }
-
-  .hero-content h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    line-height: 1.2;
-  }
-
-  .hero-content p {
-    font-size: 0.85rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-  }
-
-  /* Offer Text - Optimized for mobile screens */
-  .offer-text {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-    line-height: 1;
-  }
-
-  /* Button - Large touch target for mobile */
-  .offer-btn {
-    background-color: #fff;
-    color: #d63333;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease;
-    font-size: 0.9rem;
-    min-width: 120px;
-    /* Enhanced touch feedback */
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-    touch-action: manipulation;
-  }
-
-  .offer-btn:hover {
-    background-color: #ffeaea;
-  }
-
-  .offer-btn:active {
-    transform: scale(0.98);
-    opacity: 0.9;
-  }
-
-  /* Hero Image - Smaller and centered for mobile */
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 45%;
-    min-width: 35%;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 200px;
+/* --- 2. TABLET ISOLATED (768px - 1024px) --- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-banner-container {
+    flex-direction: column; /* Stack vertical */
+    padding-top: 60px;
     height: auto;
-    object-fit: cover;
-    object-position: center center;
-    border-radius: 0;
-    /* Seamless integration for mobile - no border separation */
-    border: none;
-    /* Ensure images maintain aspect ratio while scaling optimally */
-    min-height: 100%;
-    min-width: 100%;
+    min-height: auto;
   }
 
-  /* Additional mobile optimizations */
-  .hero-banner * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .hero-text-section {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    margin-bottom: 40px;
   }
 
+  .hero-title {
+    font-size: 36px;
+    font-family: Poppins;
+    margin-top: 0px;
+    text-align: -webkit-match-parent;
+  }
+  .hero-subtitle {
+    font-family: Poppins;
+    margin: inherit;
+    text-align: unset;
+  }
 
+  .hero-cta-wrapper {
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .hero-offer-text {
+    font-size: 110px;
+    font-family: Poppins;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+  }
+
+  .hero-offer-btn {
+    margin-left: 0;
+    font-family: Poppins;
+
+  }
+
+  .hero-image-section {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-truck-img {
+    transform: none;
+    max-width: 90%;
+  }
 }
+
+/* --- 3. MOBILE ISOLATED (0px - 767px) --- */
+@media (max-width: 767px) {
+  .hero-banner-container {
+    flex-direction: column;
+    padding: 40px 20px 0 20px;
+    min-height: auto;
+  }
+
+  .hero-text-section {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 24px;
+    margin-top: -20px;
+    font-family: Poppins;
+    text-align: unset;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    margin-top: -10px;
+    font-family: Poppins;
+    text-align: unset;
+  }
+
+  .hero-cta-wrapper {
+    justify-content: center;
+    margin-top: 60px;
+    height: 80px;
+  }
+
+  .hero-offer-text {
+    font-size: 60px;
+    font-family: Poppins;
+    margin-top: -80px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  }
+
+  .hero-offer-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: Poppins;
+    text-align: match-parent;
+    margin: auto;
+  }
+
+  .hero-image-section {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-truck-img {
+    transform: none;
+    max-width: 100%;
+    margin-right: 5px;
+  }
+}
+
