@@ -228,7 +228,12 @@ body {
         display: none;
     }
 
-    /* Show and style mobile navbar */
+    /* Show mobile bottom navigation */
+    .mobile-bottom-nav {
+        display: block;
+    }
+
+    /* Hide traditional mobile navbar and use capsule in top area */
     .mobile-navbar {
         display: flex;
         justify-content: space-between;
@@ -273,6 +278,12 @@ body {
 
     .mobile-navbar-center-capsule div {
         cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-navbar-center-capsule div.active {
+        color: #007BFF;
+        font-weight: 600;
     }
 
     .mobile-navbar-right {
@@ -291,6 +302,11 @@ body {
     }
 
     .rdNavContentMain {
+        display: none;
+    }
+
+    /* Hide top navbar when using bottom navbar approach */
+    body.with-fixed-navbar .mobile-navbar {
         display: none;
     }
 }
@@ -318,6 +334,72 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 50;
+  /* Fixed at bottom when needed */
+}
+
+/* Fixed bottom navbar styles */
+.navbar-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Body padding to account for fixed bottom navbar */
+body.with-fixed-navbar {
+  padding-bottom: 140px; /* Adjust based on navbar height */
+}
+
+/* Mobile bottom navigation */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.mobile-bottom-nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobile-bottom-nav-item:hover {
+  color: #007BFF;
+}
+
+.mobile-bottom-nav-item img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.mobile-bottom-nav-item span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Mobile nav wrapper */
+.mobile-nav-wrapper {
+  width: 100%;
+  position: relative;
 }
 
 /* Capsule bar under navbar */
@@ -374,10 +456,29 @@ body {
   color: #e91e63;
 }
 
+/* Active navigation states */
+.nav-item-active {
+  color: #007BFF !important;
+  font-weight: 600;
+}
+
+.capsule-inner div.active,
+.rdNavContentMain li.active,
+.mobile-bottom-nav-item.active {
+  color: #007BFF;
+  font-weight: 600;
+}
+
 body {
   background-color: #121212; /* black page background */
   margin: 0;
   padding: 0;
+  padding-bottom: 0; /* Will be set dynamically by component */
+}
+
+/* Body padding for bottom navbar */
+body.with-bottom-nav {
+  padding-bottom: 80px;
 }
 
 main {

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
 
 /* ==========================================================
    GLOBAL STYLES
@@ -14,7 +15,6 @@ body, main {
   width: 100%;
   background-color: #f0f8fa;
   padding: 64px 0;
-  margin: 0;
   display: block;
 }
 
@@ -28,27 +28,27 @@ body, main {
   padding: 50px 24px 0;
 }
 
-.projects-heading-title {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+.projects-heading {
+  display: flex;
   justify-content: center;
-  color: white;
-  padding: 0px 104px 224px;
-  font-family: 'Pacifico', cursive;
-  overflow: hidden;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
+  align-items: center;
+  margin-bottom: 64px;
+  padding: 50px 24px 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.projects-heading-title::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #E52B2C, #7F1818);
-  border-radius: 30px;
-  transform: perspective(200px) rotateX(-35deg);
-  transform-origin: top;
-  z-index: -1;
+.projects-heading-img {
+  display: block;
+  max-width: 100%;     /* Ensures it shrinks on mobile */
+  width: auto;         /* Maintains aspect ratio */
+  height: auto;        /* Maintains aspect ratio */
+  
+  /* Optional: Limit the size if the source image is huge */
+  max-height: 150px;   
+  
+  /* Optional: Drop shadow for depth */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .projects-heading-title h2 {
@@ -66,10 +66,10 @@ body, main {
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 0 2px 40px;
+  gap: 30px;
+  padding: 0 20px 40px;
   max-width: 1200px;
-  margin: -200px auto 0;
+  margin: auto;
 }
 
 @media (min-width: 768px) {
@@ -79,124 +79,46 @@ body, main {
 }
 
 /* ==========================================================
-   PROJECT CARD
+   PROJECT CARD WRAPPER
    ========================================================== */
 .project-card {
   position: relative;
   overflow: hidden;
   border-radius: 20px;
   background-color: whitesmoke;
-  padding: 8px;
-  transition: all 0.35s cubic-bezier(.25,.46,.45,1);
-  margin: 0 auto 30px;
+  padding: 0px; /* The white border effect */
+  margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Indicates clickable on mobile */
 }
 
-/* Card Notch */
-.project-card::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 60px;
-  background: rgb(193 193 193);
-  border-top: none;
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-/* ==========================================================
-   CARD INTERACTIONS
-   ========================================================== */
-/* Desktop Hover */
+/* Desktop Hover for Card Lift */
 @media (min-width: 1024px) {
   .project-card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
-  }
-
-  .project-card:hover .project-card-image {
-    transform: scale(1.08);
-  }
-
-  .project-card:hover .description-overlay {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .project-card:hover .card-arrow-container,
-  .project-card:hover::after {
-    opacity: 0;
+    cursor: default; /* Desktop interaction is hover, not click-nav */
   }
 }
 
-/* Active State */
+/* Mobile Active State for Card Lift */
 .project-card.active {
-  transform: translateY(-3px) scale(1.01);
+  transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0,0,0,.2);
 }
 
-.project-card.active .project-card-image {
-  transform: scale(1.03);
-}
-
-.project-card.active .description-overlay {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.project-card.active .card-arrow-container,
-.project-card.active::after {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Tablet Hover */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  }
-
-  .project-grid {
-    gap: 10px;
-    padding: 0 40px 40px;
-  }
-
-  .project-card-image-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(255,255,255,.3) 50%,
-      transparent 100%
-    );
-    transform: skewX(-25deg);
-    transition: left 0.75s cubic-bezier(.4,0,.2,1);
-  }
-}
-
 /* ==========================================================
-   CARD CONTENT
+   IMAGE AREA
    ========================================================== */
-/* Image Container */
 .project-card-image-container {
   position: relative;
   width: 100%;
   height: 280px;
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 
 .project-card-image {
@@ -204,170 +126,163 @@ body, main {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  border-radius: 12px 12px 0 0;
-  transition: transform 0.55s cubic-bezier(.22,1,.36,1);
+  border-radius: 12px;
+  transition: transform 0.5s ease;
 }
 
-/* Description Overlay */
+@media (min-width: 1024px) {
+  .project-card:hover .project-card-image {
+    transform: scale(1.05);
+  }
+}
+
+/* ==========================================================
+   DESCRIPTION OVERLAY
+   ========================================================== */
 .description-overlay {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.98);
+  
+  /* Background style for the text area */
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
-  padding: 6px;
-  height: auto !important;
-  max-height: 55% !important;
-  min-height: 30%;
-  border-top: 2px solid #ffffff;
-  transform: translateY(100%);
-  opacity: 0;
-  transition:
-    transform 0.4s cubic-bezier(.4,0,.2,1),
-    opacity 0.3s ease-out;
+  border-top: 1px solid rgba(255,255,255,0.5);
+  
+  /* Layout */
+  padding: 15px 20px;
   display: flex;
+  align-self: flex-start;
   flex-direction: column;
-  justify-content: flex-start;
-  pointer-events: none;
-  box-sizing: border-box;
+  z-index: 10;
+  
+  /* Motion Logic */
+  transform: translateY(100%); /* Hidden by default */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Text Alignment */
-.description-overlay,
-.description-overlay h3,
-.description-overlay p {
-  text-align: left !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
+/* Desktop: Trigger on Hover */
+@media (min-width: 1024px) {
+  .project-card:hover .description-overlay {
+    transform: translateY(0%);
+  }
 }
 
-.project-card * {
-  text-align: initial;
+/* Mobile/Tablet: Trigger on Active Class */
+.project-card.active .description-overlay {
+  transform: translateY(0%);
 }
 
-.description-overlay h3 {
-  font-family: 'Poppins';
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  line-height: 1.4;
-  color: black;
-  margin-top: -4px;
+.overlay-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
 }
 
-.description-overlay p {
-  font-family: 'Poppins';
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0;
-  color: black;
+/* Show content when overlay is up (via hover or active) */
+@media (min-width: 1024px) {
+  .project-card:hover .overlay-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.project-card.active .overlay-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================================
-   ARROW COMPONENT
+   CHEVRON / TRIGGER AREA
    ========================================================== */
 .card-arrow-container {
+  /* Layout & Sizing */
   position: absolute;
-  bottom: -20px;
-  left: 0;
-  right: 0;
-  height: 50px;
+  box-sizing: border-box; /* CRITICAL: Keeps padding inside the height */
+  
+  /* Shape Logic */
+  background:  rgb(193 193 193);
+  border-radius: 150px 150px 0 0; /* High pixel value ensures smooth semicircle */
+  
+  /* Flex Centering */
   display: flex;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 3;
-  opacity: 1;
-  pointer-events: auto;
-  transition: opacity 0.3s ease;
+  align-items: flex-end; /* Align arrow to bottom */
+  padding-bottom: 8px;   /* Push arrow up slightly from bottom edge */
+  
+  /* Interaction & Layering */
+  z-index: 0;
+  pointer-events: none; /* Allows clicks to pass through to the card */
+  
+  /* Visuals */
+  /* box-shadow: 0 -3px 8px rgba(0,0,0,0.15); */
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .card-arrow {
-  width: 32px;
-  height: 32px;
-  background: center / contain no-repeat url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3crect x='10' y='8' width='4' height='12'%3e%3c/rect%3e%3cpolygon points='12,2 20,10 4,10'%3e%3c/polygon%3e%3c/svg%3e");
-  transition: transform 0.3s ease;
+  /* Tailless Chevron (Polyline) */
+  background: center / contain no-repeat url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='18 15 12 9 6 15'%3e%3c/polyline%3e%3c/svg%3e");
+  
+  filter: none; /* No shadow needed on the icon since container is dark */
+  
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg); 
+  opacity: 1;
+  display: block;
 }
 
-/* Arrow rotation for active/hover states */
-.project-card.active .card-arrow,
-.project-card:hover .card-arrow {
+/* Hover State for Container (Optional) */
+@media (min-width: 1024px) {
+  .project-card:hover .card-arrow-container {
+    background: #ffffff; /* Darker on hover */
+  }
+}
+
+/* ROTATION LOGIC */
+
+/* Desktop Hover Rotation */
+@media (min-width: 1024px) {
+  .project-card:hover .card-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* Mobile Active Rotation */
+.project-card.active .card-arrow {
   transform: rotate(180deg);
 }
 
 /* ==========================================================
-   RESPONSIVE ADJUSTMENTS
+   TEXT STYLES
    ========================================================== */
-/* Tablet Overlay */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .description-overlay {
-    height: auto !important;
-    max-height: 65% !important;
-    min-height: 40%;
-    padding: 10px 8px !important;
-  }
-
-  .description-overlay h3 {
-    font-size: 16px !important;
-  }
-
-  .description-overlay p {
-    font-size: 12px !important;
-    line-height: 1.4 !important;
-  }
+.description-overlay h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #111;
+  text-align: left;
 }
 
-/* Mobile */
+.description-overlay p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: left;
+  line-height: 1.4;
+  margin: 0;
+  color: #333;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
 @media (max-width: 767px) {
-  .project-grid {
-    gap: 10px;
-    padding: 0 40px 40px;
-    margin-top: -130px;
-  }
-
   .description-overlay {
-    padding: 4px 0;
-    border-width: 1px;
+    padding: 12px 16px;
   }
-
-  .description-overlay h3 {
-    font-size: 10px;
-    margin-top: 4px;
-  }
-
-  .description-overlay p {
-    font-size: 8px;
-    line-height: 1.4;
-  }
-
-  .projects-heading-title {
-    padding: 0px 64px 120px;
-  }
-
-  .projects-heading-title::before {
-    transform: perspective(300px) rotateX(-55deg);
-  }
-
+  
   .projects-heading-title h2 {
     font-size: 32px;
-    text-align: left;
   }
-
-  .project-card-image-container::after {
-    display: none;
-  }
-}
-
-/* Overlay backdrop for closing active cards */
-.project-overlay-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 10;
-  cursor: pointer;
 }

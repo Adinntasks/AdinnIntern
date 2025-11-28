@@ -125,7 +125,7 @@ const Offers = () => {
   };
 
   return (
-    <section className="rdAvailVehPageDtpg">
+    <section id="offers-content" className="rdAvailVehPageDtpg">
       <div className="rdAvailVehHeaderDtpg">
         <h2>Offers On Chennai</h2>
         <div className="rdAvailVehFiltersDtpg">
